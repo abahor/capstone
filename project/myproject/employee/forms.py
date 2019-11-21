@@ -25,3 +25,8 @@ class Login(FlaskForm):
     password = PasswordField('Password',
                              validators=[DataRequired(), Length(min=6, message='your password is too short')])
     submit = SubmitField('Login')
+
+
+class resetForm():
+    email = StringField('your email', validators=[DataRequired(), Email()], render_kw={'placeholder': 'your email'})
+    submit = SubmitField('Send reset Email')

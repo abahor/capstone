@@ -20,6 +20,13 @@ class RegisterationForm(FlaskForm):
                              render_kw={'placeholder': 'Password'})
     pass_confirm = PasswordField('Confirm Password',
                                  validators=[InputRequired()], render_kw={'placeholder': 'confirm password'})
+    gender = RadioField('your gender',choices[(True,'male'),( False,'female')])
+    street = StringField('street', validators=[DataRequired()], render_kw={'placeholder': 'street'})
+    city = StringField('City', validators=[DataRequired()], render_kw={'placeholder': 'City'})
+    province = SelectField('State', validators=[DataRequired()], choices=[('assuit', 'assuit'), ('aswan', 'aswan'), (
+        'monufia', 'mounifia')])  # ---  ---  kamel hena ya afgany # --- will be verified by the country js ajax
+    country = SelectField('Country', validators=[DataRequired()],
+                          choices=[('Eg', 'Egypt'), ('Jo', 'Jorden'), ('Sa', 'Saudi')])
     submit = SubmitField('Register')
 
     def check_email(self, field):

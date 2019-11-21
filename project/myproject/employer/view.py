@@ -59,7 +59,7 @@ def confirmaion():
         if confirm == session['code']:
             user = Users(email=session['email'], username=session['username'], password=session['password'],
                          address_street=session['address_street'], address_city=session['address_city'],
-                         address_country=session['address_country'], type=False)
+                         address_country=session['address_country'], type=True)
             try:
                 db.session.add(user)
                 db.session.commit()

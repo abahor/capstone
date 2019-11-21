@@ -5,12 +5,11 @@ from flask_login import login_user, login_required, logout_user, current_user
 from flask_mail import Message
 from markupsafe import Markup
 from myproject import mail, db, detect
-from myproject.employer.forms import RegisterationForm, LoginForm, updateForm, formRecover
+from myproject.employee.forms import RegisterationForm, LoginForm, updateForm, formRecover, resetForm
 from myproject.models import Users
 from werkzeug.security import generate_password_hash
 
 from project.myproject import randomcode
-from project.myproject.employer.forms import resetForm
 
 employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/employee')
 
