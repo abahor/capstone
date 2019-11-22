@@ -14,23 +14,23 @@ from project.myproject import randomcode
 employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/employee')
 
 
-@employee.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        redirect(url_for('employee.main'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        u = Users.query.filter_by('email' = form.email.data).first()
-        if u.check_password(form.password.data):
-            login_user(u, remember=True, duration=datetime.timedelta(weeks=52))
-
-            next = request.args.get('next')
-
-            if next is None or not next[0] == '/':
-                next = detect(current_user)
-            return redirect(next)
-
-    return render_template('login.html', form=form)
+# @employee.route('/login', methods=['GET', 'POST'])
+# def login():
+#     if current_user.is_authenticated:
+#         redirect(url_for('employee.main'))
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         u = Users.query.filter_by('email' = form.email.data).first()
+#         if u.check_password(form.password.data):
+#             login_user(u, remember=True, duration=datetime.timedelta(weeks=52))
+#
+#             next = request.args.get('next')
+#
+#             if next is None or not next[0] == '/':
+#                 next = detect(current_user)
+#             return redirect(next)
+#
+#     return render_template('login.html', form=form)
 
 
 @employee.route('/main')
@@ -96,19 +96,18 @@ def update():
     return render_template('update.html', form=form)
 
 
-@employee.route('/change')
-@login_required
-def change():
-    form = formRecover()
-    if form.validate_on_submit():
-        current_user.password = generate_password_hash(form.password.data)
-        db.session.commit()
-        return render_template('successful_changed.html')
-    return render_template('change.html')
+# @employee.route('/change')
+# @login_required
+# def change():
+#     form = formRecover()
+#     if form.validate_on_submit():
+#         current_user.password = generate_password_hash(form.password.data)
+#         db.session.commit()
+#         return render_template('successful_changed.html')
+#     return render_template('change.html')
 
 
 @employee.route('/forget_password', methods=['GET', 'POST'])
-@login_required
 def forgot_password():
     session['reset_true'] = True
     form = resetForm()
