@@ -41,7 +41,8 @@ mail = Mail(app)
 login = LoginManager()
 login.init_app(app)
 login.login_view = 'users.login'
-
+login_manager.refresh_view = 'main.change'
+login_manager.session_protection = "strong"
 # ----------------- REGISTER_THE_BLUEPRINT
 from myproject.employee.views import employee
 from myproject.employer.views import employer
@@ -51,13 +52,13 @@ app.register_blueprint(employer)
 
 
 # --- useful functions
-def detect(current):
+def detect(current,branch):
     if current.is_authenticated != True:
         return '/'
     elif current.employer == True:
-        return url_for('employer.main')
+        return url_for('employer.%s'%branch)
     elif current.employer != True:
-        return url_for('employee.main')
+        return url_for('employee.%s'%branch)
     else:
         return '/'
 

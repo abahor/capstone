@@ -8,31 +8,32 @@ from myproject import mail, db, detect, randomcode
 from myproject.employer.forms import RegisterationForm, LoginForm, updateForm, formRecover, resetForm
 from myproject.models import Users
 from werkzeug.security import generate_password_hash
+from myproject.employer.media.handle_name import handle
 
 employer = Blueprint('employer', __name__, template_folder='temp', url_prefix='/employer')
 
 
-@employer.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        u = Users.query.filter_by('email' = form.email.data).first()
-        if u is None:
-            flash("email doens't exist or password is wrong")
-        else:
-            if u.check_password(form.password.data):
-                login_user(u, remember=True, duration=datetime.timedelta(weeks=52))
-                return redirect(detect(current_user))
-            else:
-                flash("email doens't exist or password is wrong")
-
-    return render_template('login.html', form=form)
+# @employer.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     if form.validate_on_submit():
+#         u = Users.query.filter_by('email' = form.email.data).first()
+#         if u is None:
+#             flash("email doens't exist or password is wrong")
+#         else:
+#             if u.check_password(form.password.data):
+#                 login_user(u, remember=True, duration=datetime.timedelta(weeks=52))
+#                 return redirect(detect(current_user,'main'))
+#             else:
+#                 flash("email doens't exist or password is wrong")
+#
+#     return render_template('login.html', form=form)
 
 
 @employer.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(detect(current_user))
+        return redirect(detect(current_user,'main'))
     form = RegisterationForm()
     if form.validate_on_submit():
         session['email'] = form.email.data
@@ -63,10 +64,13 @@ def confirmaion():
             try:
                 db.session.add(user)
                 db.session.commit()
+                return render_template('successful_added.html')
             except:
                 db.session.rollback()
+    else:
+        return abort(404)
 
-    return render_template('successful_added.html')
+
 
 
 @employer.route('/update')
@@ -75,21 +79,32 @@ def update():
     form = updateForm()
     if form.validate_on_submit():
         current_user.username = form.username.data
-        current_user.city = form.city.data
-        current_user.country = form.country.data
-        current_user.province = form.province.data
+        current_user.address_street = form.street.data
+        current_user.address_city = form.city.data
+        current_user.address_province = form.province.data
+        current_user.address_country = form.country.data
+        current_user.profile_pic = handle(form.picture)
+    # ----------------------     filling the form with the current_user data
+    form.username.data = current_user.username
+    form.street.data = current_user.address_street
+    form.city.data = current_user.address_city
+    form.province.data = current_user.address_province
+    form.country.data = current_user.address_country
     return render_template('update.html', form=form)
 
 
-@employer.route('/change')
-@login_required
-def change():
-    form = formRecover()
-    if form.validate_on_submit():
-        current_user.password = generate_password_hash(form.password.data)
-        db.session.commit()
-        return render_template('successful_changed.html')
-    return render_template('change.html')
+# @employer.route('/change')
+# @login_required
+# def change():
+#     form = formRecover()
+#     if form.validate_on_submit():
+#         current_user.password = generate_password_hash(form.password.data)
+#         try:
+#             db.session.commit()
+#         except Exception as e:
+#             return abort(404)
+#         return render_template('successful_changed.html')
+#     return render_template('change.html')
 
 
 @employer.route('/forget_password', methods=['GET', 'POST'])
@@ -105,7 +120,7 @@ def forgot_password():
             session['user'] = u.id
             message = Message('confirmaion code', sender='jousefgamal46@gmail.com', recipients=[form.email.data])
             session['reset_code'] = randomcode()
-            message.body = f'your reset code: {session["reset_code"]}'
+            message.body = f'your reset code: copy this link and put it in browser {url_for("employer.reset")}?resetcode={session["reset_code"]}' # ----- _external for url_for is extenral
             message.html = render_template('reset_email.html')
             mail.send(message)
             return redirect(url_for('employer.reset'))
@@ -113,8 +128,11 @@ def forgot_password():
 
 
 @employer.route('/reset')
-@login_required
 def reset():
+    if current_user.is_authenticated:
+        return redirect(detect(current_user,'update'))
+    if session['reset_true'] != True:
+        return abort(404)
     de = request.args.get('resetcode')
     try:
         if de == session['reset_code']:

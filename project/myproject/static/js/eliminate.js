@@ -8,7 +8,7 @@ d.addEventListener('Change',function () {
     myFunction(this);
     }
   };
-  y.open("GET", "/get_province_for_country");
+  y.open("GET", "/get_province_for_country?country="+ d.value );
   y.send();
 });
 
@@ -17,7 +17,5 @@ function myFunctio(list) {
   province.options.length = 0
   for (var variable in list) {
     province.options[province.options.length + 1] = new Option(variable['province'],variable['key'],false,false)
-
-
   }
 }
