@@ -4,35 +4,7 @@
     <option name="SPLITTER_PROPORTION" value="0.6237705" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a5951d7-99bb-4a73-82c2-bd974a4a30b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/codexz.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Eg.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Jo.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Sa.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/change.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/forget_password.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/main.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/recover.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/reset_email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project/myproject/media/handle_media.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/capstone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/capstone.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employee/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employee/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employee/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employer/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employer/media/handle_name.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employer/temp/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/temp/confirmation.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employer/temp/reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/temp/reset_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/employer/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/main/temp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/temp/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/myproject/static/js/eliminate.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/static/js/eliminate.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sad/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/sad/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="6a5951d7-99bb-4a73-82c2-bd974a4a30b7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +80,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
