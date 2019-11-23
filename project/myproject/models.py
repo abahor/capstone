@@ -11,7 +11,7 @@ def load_user(user_id):
 
 class Users(db.Model, UserMixin):
     __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True, auto_increament=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64))
     password = db.Column(db.String(128))
@@ -26,11 +26,11 @@ class Users(db.Model, UserMixin):
     Jobs = db.relationship('Jobs', backref='author', lazy=True)
 
     def __init__(self, email, username, password, male, address_city, address_street, address_province, address_country,
-                 type=False):
+                 type_of_account=False):
         self.username = username
         self.email = email
         self.password = generate_password_hash(password)
-        self.employer = type
+        self.employer = type_of_account
         self.male = male
         self.address_street = address_street
         self.address_city = address_city
@@ -42,7 +42,7 @@ class Users(db.Model, UserMixin):
 
 
 class Jobs(db.Model):
-    __tabelname__ = 'jobs'
+    __tablename__ = 'jobs'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     text = db.Column(db.Text)

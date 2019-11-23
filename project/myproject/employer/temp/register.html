@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+<form class="" method="post">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+  {{ form.email.label }}
+  {{ form.email(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.username.label }}
+    {{ form.username(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.password.label }}
+    {{ form.password(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.pass_confirm.label }}
+    {{ form.pass_confirm(class='form-control') }}
+  </div>
+  <div class="form-group">
+    <!-- IDEA: -------------------------------------------------- ///// i just made this to try to connect between them\\\\\\\ -->
+
+    {{ form.gender(class="form-check form-check-inline") }}
+  </div>
+  <div class="form-group">
+    {{ form.address_street.label }}
+    {{ form.address_street(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.address_city.label }}
+    {{ form.address_city(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.address_province.label }}
+    {{ form.address_province(class='form-control') }}
+  </div>
+  <div class="form-group">
+    {{ form.address_country.label }}
+    {{ form.address_country(class='form-control') }}
+  </div>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+<script src="/static/js/eliminate.js" charset="utf-8"></script>
+{% endblock %}

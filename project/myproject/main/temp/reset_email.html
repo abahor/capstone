@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset mail</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h2>click on this link to change your password <a href="{{ url_for('main.reset') }}?{{session['reset_code'] }}">reset</a></h2>
+        </div>
+    </div>
+</body>
+</html>

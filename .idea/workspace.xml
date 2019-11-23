@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.6237705" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a5951d7-99bb-4a73-82c2-bd974a4a30b7" name="Default Changelist" comment="" />
+    <list default="true" id="6a5951d7-99bb-4a73-82c2-bd974a4a30b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/codexz.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Eg.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Jo.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/json/Sa.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/change.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/forget_password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/main.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/recover.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/main/temp/reset_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/myproject/media/handle_media.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/capstone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/capstone.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employee/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employee/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employee/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employee/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employer/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employer/media/handle_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employer/temp/confirmation.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/temp/confirmation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employer/temp/reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/temp/reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/employer/view.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/employer/view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/main/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/main/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/main/temp/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/main/temp/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/myproject/static/js/eliminate.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/myproject/static/js/eliminate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sad/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/sad/test.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="false">
@@ -97,14 +129,18 @@
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
+=======
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+>>>>>>> 63f79aeb67d54ad5dd03aa0225761fec6cfc620f
       <list>
-        <option value="$PROJECT_DIR$/project/myproject/models.py" />
-        <option value="$PROJECT_DIR$/project/myproject/__init__.py" />
-        <option value="$PROJECT_DIR$/project/myproject/employee/views.py" />
-        <option value="$PROJECT_DIR$/project/myproject/employee/forms.py" />
-        <option value="$PROJECT_DIR$/project/myproject/employer/view.py" />
+        <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectConfigurationFiles">
     <option name="files">
@@ -116,60 +152,23 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="651" />
-    <option name="y" value="21" />
-    <option name="width" value="697" />
-    <option name="height" value="735" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="capstone" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="capstone" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="capstone" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="myproject" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="capstone" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="myproject" type="462c0819:PsiDirectoryNode" />
-              <item name="employee" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="capstone" type="b2602c69:ProjectViewProjectNode" />
-              <item name="capstone" type="462c0819:PsiDirectoryNode" />
-              <item name="project" type="462c0819:PsiDirectoryNode" />
-              <item name="myproject" type="462c0819:PsiDirectoryNode" />
-              <item name="employer" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1TyMCLBc5FpPXAeVEUAsAVk9S6r" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project/myproject/main/json" />
+      <recent name="$PROJECT_DIR$/project/myproject/main" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -196,28 +195,18 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
+<<<<<<< HEAD
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/project/app.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -285,5 +274,9 @@
         </state>
       </provider>
     </entry>
+=======
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+>>>>>>> 63f79aeb67d54ad5dd03aa0225761fec6cfc620f
   </component>
 </project>
