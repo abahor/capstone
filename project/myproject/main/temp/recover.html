@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+<form method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.password.label }}
+        {{ form.password(class='form-control') }}
+    </div>
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+{% endblock %}

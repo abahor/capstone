@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
 <form class="" method="post">
+    {{ form.hidden_tag() }}
  <div class="form-group">
   {{ form.email.label }}
   {{ form.email(class='form-control') }}

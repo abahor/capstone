@@ -13,9 +13,9 @@ d.addEventListener('Change',function () {
 });
 
 
-function myFunctio(list) {
+function myFunction(list) {
   province.options.length = 0
   for (var variable in list) {
-    province.options[province.options.length + 1] = new Option(variable['province'],variable['key'],false,false)
+    province.options[province.options.length + 1] = new Option(variable,variable,false,false)
   }
 }
