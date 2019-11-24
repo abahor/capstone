@@ -1,5 +1,10 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
+<div class="alert alert-danger" role="alert">
+  {% for element in get_flashed_messages() %}
+      {{ element|e }}
+  {% endfor %}
+</div>
 <form class="" method="post">
     {{ form.hidden_tag() }}
  <div class="form-group">

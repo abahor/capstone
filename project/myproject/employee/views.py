@@ -7,6 +7,9 @@ from myproject import random_code
 from myproject.employee.forms import UpdateForm, RegistrationForm
 from myproject.models import Users
 
+from project.myproject import check_cat, detect
+from project.myproject.media.handle_media import handle
+
 employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/employee')
 
 
@@ -31,17 +34,22 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 
 @employee.route('/main')
 @login_required
+@check_cat
 def main():
     return render_template('employee_main.html')
 
+@employee.route('/nearby_jobs')
+@login_required
+@check_cat
+def nearby_jobs():
+
+    return render_template('nearby_jobs.html')
 
 @employee.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         if current_user.employer:
-            return redirect(url_for('employer.main'))
-        else:
-            return redirect(url_for('employee.main'))
+            return redirect(detect(current_user,'main'))
 
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -86,13 +94,22 @@ def confirmation():
 
 @employee.route('/update')
 @login_required
+@check_cat
 def update():
     form = UpdateForm()
     if form.validate_on_submit():
         current_user.username = form.username.data
-        current_user.city = form.city.data
-        current_user.country = form.country.data
-        current_user.province = form.province.data
+        current_user.address_street = form.street.data
+        current_user.address_city = form.city.data
+        current_user.address_province = form.province.data
+        current_user.address_country = form.country.data
+        current_user.profile_pic = handle(form.picture)
+    # ----------------------     filling the form with the current_user data
+    form.username.data = current_user.username
+    form.street.data = current_user.address_street
+    form.city.data = current_user.address_city
+    form.province.data = current_user.address_province
+    form.country.data = current_user.address_country
     return render_template('update.html', form=form)
 
 # @employee.route('/change')

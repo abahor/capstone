@@ -1,14 +1,22 @@
 from flask import Blueprint, render_template, abort, redirect, session, request
-from flask_login import current_user, login_required, logout_user
+from flask_login import current_user, login_required
 from flask_mail import Message
-
 from myproject import mail, db, detect, random_code
-from myproject.employer.forms import RegistrationForm, UpdateForm
+from myproject.employer.forms import RegistrationForm, UpdateForm, CreateJob
 from myproject.media.handle_media import handle
 from myproject.models import Users
 
+from project.myproject import check_cat
+
 employer = Blueprint('employer', __name__, template_folder='temp', url_prefix='/employer')
 
+
+@employer.route('/main')
+@login_required
+@check_cat
+def main():
+
+    return render_template('employer_main.html')
 
 @employer.route('/register', methods=['GET', 'POST'])
 def register():
@@ -56,6 +64,7 @@ def confirmation():
 
 @employer.route('/update')
 @login_required
+@check_cat
 def update():
     form = UpdateForm()
     if form.validate_on_submit():
@@ -88,8 +97,23 @@ def update():
 #     return render_template('change.html')
 
 
-@employer.route('/logout')
+# @employer.route('/logout')
+# @login_required
+# def logout():
+#     logout_user()
+#     return redirect('/')
+@employer.route('/account')
 @login_required
-def logout():
-    logout_user()
-    return redirect('/')
+@check_cat
+def account():
+    # show the account
+    return render_template('account.html')
+
+@employer.route('/post_job')
+@login_required
+@check_cat
+def post_job():
+    form = CreateJob()
+    if form.validate_on_submit():
+        
+    return render_template('post_job.html',form=form)

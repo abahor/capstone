@@ -18,6 +18,7 @@ class Users(db.Model, UserMixin):
     profile_pic = db.Column(db.String(64), default='default.jpg')
     employer = db.Column(db.Boolean, nullable=False)
     male = db.Column(db.Boolean, nullable=False)
+    phone_number = db.Column(db.String(20),nullable=False)
     address_street = db.Column(db.String(20), nullable=False)
     address_city = db.Column(db.String(15), nullable=False)
     address_province = db.Column(db.String(20), nullable=False)
@@ -45,14 +46,18 @@ class Jobs(db.Model):
     __tablename__ = 'jobs'
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    text = db.Column(db.Text)
-    images = db.Column(db.Text)
     title = db.Column(db.Text, nullable=False)
+    text = db.Column(db.Text)
+    # images = db.Column(db.Text)
+    coordinates_Latitude = db.Column(db.String(20))
+    coordinates_Longtitude = db.Column(db.String(20))
+    applied_for_this_job = db.Column(db.Integer)
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    comments_on_the_post = db.relationship('comments', backref='comments_on', lazy=True)
+    # comments_on_the_post = db.relationship('comments', backref='comments_on', lazy=True)
 
     def __init__(self, text, title, images, user_id):
         self.text = text
         self.title = title
-        self.images = images
+        self.coordinates_Latitude = coordinates_Latitude
+        self.coordinates_Longtitude = coordinates_Longtitude
         self.user_id = user_id

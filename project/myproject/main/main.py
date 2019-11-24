@@ -21,7 +21,7 @@ def login():
     if form.validate_on_submit():
         u = Users.query.filter_by('email' == form.email.data).first()
         if u is None:
-            flash(Markup("email doesn't exist try <a href='/'>register</a> instead"))
+            flash(Markup("email doesn't exist try <a href='/' class='alert-link'>register</a> instead"))
         elif u.check_password(form.password.data):
             login_user(u, remember=True, duration=datetime.timedelta(weeks=52))
 
@@ -98,6 +98,8 @@ def get_province_for_country():
         if current_user.is_authenticated:
             logout_user()
             return abort(404)
+        else:
+            return abort(404)
     content = open(f'/json/{t}.json')
     data = json.load(content)
     return jsonify(data)
@@ -108,3 +110,10 @@ def get_province_for_country():
 def logout():
     logout_user()
     return redirect('/')
+
+
+@main.route('/')
+def main():
+    if current_user.is_authenticated:
+        return redirect(detect(current_user,'main'))
+    return render_template('main.html')

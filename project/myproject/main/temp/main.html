@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} Jobs {% endblock %}</title>
+    {% block links %}
+    <link rel="stylesheet" href="static/css/master.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
-{% block content %}
+    {% endblock %}
+  </head>
+  <body>
+    {% block header %}
+
+    <header>
+      <ul>
+        <li>main</li>
+        <li>about</li>
+        <li>don't know what to type here</li>
+        {% if current_user.is_authenticated %}
+            <li>current_user.username</li>
+        {% endif %}
+
+      </ul>
+    </header>
+
+
+    {% endblock %}
+    {% block content %}
 <div class="container">
-    <div class="jumbotron">
-        {% block jumbotron %}
-        {% endblock %}
+      <div class="jumbotron">
+    {% block jumbotron %}
+    <h1>the best way to find jobs instansouely</h1>
+    <a href="{{ url_for('main.login')}}"><button type="button" name="button">i am searching for a job</button></a>
+    <a href="{{ url_for('main.login') }}"><button type="button" name="button">post a job</button></a>
+    {% endblock %}
+      </div>
     </div>
-</div>
-{% endblock %}
-</body>
+    {% endblock %}
+  </body>
 </html>

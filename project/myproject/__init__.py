@@ -1,10 +1,11 @@
 import string
+from functools import wraps
 from random import choice, randint
 
-from flask import Flask, url_for
+from flask import Flask, url_for, request, abort
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask_login import LoginManager
+from flask_login import LoginManager, current_user
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -63,9 +64,23 @@ def detect(current, branch):
     except:
         return '/'
 
+
 def random_code():
     s = "".join(choice(string.digits) for x in range(randint(1, 8)))
     return s
+
+
+def check_cat(f):
+    @wraps(f)
+    def wra(*args, **kwargs):
+        p = str(request.url_rule).split('/')
+        if current_user.employer == True and p[1] == 'employer':
+            return f(*args, **kwargs)
+        elif not current_user.employer and p[1] == 'employee':
+            return f(*args, **kwargs)
+        else:
+            return abort(404)
+
 
 # ----- importing Blueprints
 from myproject.employee.views import employee

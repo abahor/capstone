@@ -5,16 +5,17 @@ from wtforms.validators import DataRequired, Email, EqualTo, Length
 
 
 class RegistrationForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()], render_kw={'placeholder': 'enter your email'})
+    email = StringField('Email', validators=[DataRequired(), Email()], render_kw={'placeholder': 'enter your email','class':'form-control'})
     password = PasswordField('Password',
                              validators=[DataRequired(), Length(min=6, message='your password is too short')],
-                             render_kw={'placeholder': 'Password'})
+                             render_kw={'placeholder': 'Password','class':'form-control'})
     pass_confirm = PasswordField('Confirm password',
                                  validators=[DataRequired(), EqualTo('password', message='Password must match')],
-                                 render_kw={'placeholder': 'Retype password'})
+                                 render_kw={'placeholder': 'Retype password','class':'form-control'})
+    phone_number = StringField('your phone number',validators=[InputRequired(),DataRequired(), Length(min=6, max=20, message='your password is too short')]],render_kw={'placeholder':'your phone number','class':'form-control'})
     gender = RadioField('your gender', choices=[(True, 'male'), (False, 'female')])
-    street = StringField('street', validators=[DataRequired()], render_kw={'placeholder': 'street'})
-    city = StringField('City', validators=[DataRequired()], render_kw={'placeholder': 'City'})
+    street = StringField('street', validators=[DataRequired()], render_kw={'placeholder': 'street','class':'form-control'})
+    city = StringField('City', validators=[DataRequired()], render_kw={'placeholder': 'City','class':'form-control'})
     province = SelectField('State', validators=[DataRequired()], choices=[('assuit', 'assuit'), ('aswan', 'aswan'), (
         'monufia', 'mounifia')])  # ---  ---  kamel hena ya afgany # --- will be verified by the country js ajax
     country = SelectField('Country', validators=[DataRequired()],
