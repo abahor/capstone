@@ -1,10 +1,17 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
-<div class="alert alert-danger" role="alert">
-  {% for element in get_flashed_messages() %}
-      {{ element|e }}
-  {% endfor %}
-</div>
+
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
 <form class="" method="post">
     {{ form.hidden_tag() }}
  <div class="form-group">
@@ -17,4 +24,5 @@
  </div>
  {{ form.submit(class="btn btn-primary") }}
 </form>
+<!--<a><button class="btn btn-primary">register as employee</button></a>-->
 {% endblock %}

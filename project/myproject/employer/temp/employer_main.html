@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Main</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        {% for sad in jobs %}
+        <div id='{{ sad.id }}'>
+
+
+            <h3>{{ sad.title }}</h3>
+            <p>{{ sad.text }}</p>
+            {% if sad.applied_for_this_job >= 1 %}
+                <p style="color:red">some on had applied for this job is it available </p>
+                <div class="">
+                  <button type="button" class="btn btn-danger" name="button" onclick="" onclick="keep({{ sad.id }})">yes</button>
+                  <button type="button" class="btn btn-danger" name="button" onclick="delete({{ sad.id }},e)">No</button>
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+    <script src="/static/js/employee_main.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      function keep(id,e){
+        var xh = new XMLHttpRequest();
+        xh.onreadystatechange = function(){
+          if (this.status == 200 && this.readyState == 4 ){
+              var t = e.parentNode;
+              t.remove();
+              return false;
+          }
+        }
+        xh.open('POST','/keep_job?job_id='+ id )
+        xh.send()
+      }
+      function delete(id){
+        var xh = new XMLHttpRequest();
+        xh.onreadystatechange = function(){
+          var o = document.getElementById(id);
+          o.parentNode.removeChild(o)
+          return false;
+      }
+      xh.open('POST','/delete_this_job?job_id='+id)
+      xh.send()
+    }
+    </script>
+  </body>
+</html>

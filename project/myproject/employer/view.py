@@ -6,7 +6,7 @@ from myproject.employer.forms import RegistrationForm, UpdateForm, CreateJob
 from myproject.media.handle_media import handle
 from myproject.models import Users
 
-from project.myproject import check_cat
+from myproject import check_cat
 
 employer = Blueprint('employer', __name__, template_folder='temp', url_prefix='/employer')
 
@@ -15,8 +15,9 @@ employer = Blueprint('employer', __name__, template_folder='temp', url_prefix='/
 @login_required
 @check_cat
 def main():
+    i = Jobs.query.filter_by(user_id=current_user.id) # .filter_by(applied_for_this_job>=1)
+    return render_template('employer_main.html',jobs=i)
 
-    return render_template('employer_main.html')
 
 @employer.route('/register', methods=['GET', 'POST'])
 def register():
@@ -24,10 +25,12 @@ def register():
         return redirect(detect(current_user, 'main'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        print('sad')
         session['email'] = form.email.data
         session['username'] = form.username.data
         session['password'] = form.password.data
         session['gender'] = form.gender.data
+        session['phone_number'] = form.phone_number.data
         session['address_street'] = form.street.data
         session['address_city'] = form.city.data
         session['address_province'] = form.province.data
@@ -38,7 +41,8 @@ def register():
         message.html = render_template('confirmation.html')
         mail.send(message)
         session['confirm'] = True
-    return render_template('register.html')
+    print(form.errors)
+    return render_template('register.html', form=form)
 
 
 @employer.route('/confirmation')
@@ -109,11 +113,23 @@ def account():
     # show the account
     return render_template('account.html')
 
+
 @employer.route('/post_job')
 @login_required
 @check_cat
 def post_job():
     form = CreateJob()
     if form.validate_on_submit():
-        
-    return render_template('post_job.html',form=form)
+        new_job= Job(text=text,title=title,user_id=current_user.id,address_province=form.address_province,address_country=form.address_country.data,phone_number=form.phone_number.data,location=form.street.data + ' ' +form.city.data )
+        try:
+            db.session.add(new_job)
+            db.session.commit()
+            return render_template('successful_job_added.html')
+        except Exception as e:
+            db.session.rollback()
+            return render_template('something_went_wrong.html',e=e)
+
+
+    return render_template('post_job.html', form=form)
+
+# @employer.route('')

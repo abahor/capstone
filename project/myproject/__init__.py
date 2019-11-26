@@ -10,6 +10,7 @@ from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_googlemaps import GoogleMaps
+import flask_whooshalchemy as wa
 
 app = Flask(__name__)
 
@@ -19,7 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['GOOGLEMAPS_KEY'] = 'AIzaSyDhCWI6M6yqMrDHBLxxTqKgfzZ-iTjaV9o'
 # --------------- BUILD
 db = SQLAlchemy(app)
-Migrate(app, db)
+migrate = Migrate(app, db)
 
 # ------- dos attack protection
 limiter = Limiter(
@@ -45,9 +46,9 @@ mail = Mail(app)
 # ---------------- LOGIN
 login = LoginManager()
 login.init_app(app)
-login.login_view = 'users.login'
+login.login_view = 'main.login'
 login.refresh_view = 'main.change'
-login.session_protection = "strong"
+# login.session_protection = "strong"
 
 
 # --- useful functions
@@ -80,14 +81,18 @@ def check_cat(f):
             return f(*args, **kwargs)
         else:
             return abort(404)
+    return wra
+
 
 
 # ----- importing Blueprints
 from myproject.employee.views import employee
 from myproject.employer.view import employer
-from myproject.main.main import main
+from myproject.main.main import mained
 
 # ----------------- REGISTER_THE_BLUEPRINT
 app.register_blueprint(employee)
 app.register_blueprint(employer)
-app.register_blueprint(main)
+app.register_blueprint(mained)
+
+

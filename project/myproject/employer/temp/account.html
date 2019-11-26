@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+<img src="/static/media/{{ current_user.profile_pic}}" alt="" onclick="myfunction()">
+<h2>{{ current_user.username }}</h2>
+<h3>{{ current_user.email }}</h3>
+{% if current_user.male %}
+    <h4>gender : male</h4>
+{% else %}
+    <h4>gender : female</h4>
+{% endif %}
+<h5>{{ current_user.phone_number }}</h5>
+
+<hr>
+<p>
+  street : {{ current_user.address_street }} <br>
+  city : {{ current_user.address_city }}<br>
+  province : {{ current_user.address_province }}<br>
+  country : {{ current_user.address_country }}<br>
+</p>
+{% if current_user.employer %}
+  <a href="{{ url_for('/employer/change') }}"><button type="button" name="button"></button></a>
+{% else %}
+    <a href="{{ url_for('/employee/change') }}"><button type="button" name="button"></button></a>
+{% endif %}
+
+{% if current_user.employer %}
+    {% for var in current_user.author %}
+       <h3>{{ var.author.text }}</h3><!-- change some of the author  check first -->
+       <p>{{ var.author. }}</p>
+    {% endfor %}
+
+{% endif %}
+
+
+{% endblock %}

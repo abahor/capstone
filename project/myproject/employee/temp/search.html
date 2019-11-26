@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+<button href='{{ url_for(employee.nearby_jobs) }}' type="button" name="button">find job near me</button>
+{% for job in jobs %}
+<a href="{{ url_for('main.show_details',job_id=job.id ) }}">
+  <div class="main-job">
+    <h3>{{ job.title }}</h3>
+    <p>{{ job.text|e }}</p>
+    <a href="{{ url_for('employee.apply',job_id=job.id) }}"><button type="button" style="float=right" name="button">appy for this job</button></a>
+  </div>
+</a>
+{% endfor %}
+
+{% endblock %}

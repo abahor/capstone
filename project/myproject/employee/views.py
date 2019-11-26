@@ -7,8 +7,8 @@ from myproject import random_code
 from myproject.employee.forms import UpdateForm, RegistrationForm
 from myproject.models import Users
 
-from project.myproject import check_cat, detect
-from project.myproject.media.handle_media import handle
+from myproject import check_cat, detect
+from myproject.media.handle_media import handle
 
 employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/employee')
 
@@ -32,24 +32,30 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 #     return render_template('login.html', form=form)
 
 
-@employee.route('/main')
-@login_required
-@check_cat
-def main():
-    return render_template('employee_main.html')
+# @employee.route('/main')
+# @login_required
+# @check_cat
+# def main():
+#     return render_template('employee_main.html')
 
 @employee.route('/nearby_jobs')
 @login_required
 @check_cat
 def nearby_jobs():
+    coords = request.args.get('coords')
+    lat = coords.split(' ')[0]
+    long = coords.split(' ')[1]
+    geolocator = Nominatim(user-agent='my user_agent ') # 000000000000000000000000000
+    location = geolocator.reverse(lat,long)
+    jobs = Jobs.query.search(location.address)
+    return render_template('nearby_jobs.html',jobs=jobs)
 
-    return render_template('nearby_jobs.html')
 
 @employee.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
         if current_user.employer:
-            return redirect(detect(current_user,'main'))
+            return redirect(detect(current_user, 'main'))
 
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -99,6 +105,7 @@ def update():
     form = UpdateForm()
     if form.validate_on_submit():
         current_user.username = form.username.data
+        current_user.phone_number = form.phone_number.data
         current_user.address_street = form.street.data
         current_user.address_city = form.city.data
         current_user.address_province = form.province.data
@@ -112,12 +119,28 @@ def update():
     form.country.data = current_user.address_country
     return render_template('update.html', form=form)
 
-# @employee.route('/change')
-# @login_required
-# def change():
-#     form = formRecover()
-#     if form.validate_on_submit():
-#         current_user.password = generate_password_hash(form.password.data)
-#         db.session.commit()
-#         return render_template('successful_changed.html')
-#     return render_template('change.html')
+
+@employee.route('/search')
+@login_required
+@check_cat
+def search():
+    search_text = request.args.get('q')
+    if not search_text:
+        abort(404)
+    jobs = Jobs.query.search(search_text).all()
+    return render_template('search.html',jobs=jobs)
+
+@employee.route('/apply')
+@login_required
+@check_cat
+def apply():
+    jb = request.args.get('job_id')
+    job = Job.query.get(jb)
+    if not job:
+        return abort(404)
+    job.applied_for_this_job += 1
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+    return render_template('apply.html',job=job)

@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+<h3>job.title</h3>
+<p>job.text </p>
+<img src="{{ job.author.profile_pic }}" alt="">
+<p> {{ job.phone_for_contact }}</p>
+<p>provided by {{ job.author.username }}</p>
+
+<div class="jumbotron">
+  <h4>{{ job.address_of_job }}</h4>
+  <h5>{{ job.address_province }}</h5>
+  <h6>{{ job.address_country }}</h6>
+</div>
+{% endblock %}
