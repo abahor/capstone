@@ -1,11 +1,12 @@
-from flask import Blueprint, render_template, abort, redirect, session, request, url_for
+from flask import Blueprint, render_template, abort, redirect, session, request, url_for, flash
 from flask_login import login_required, current_user
 from flask_mail import Message
 
+from geopy.geocoders import Nominatim
 from myproject import mail, db
 from myproject import random_code
 from myproject.employee.forms import UpdateForm, RegistrationForm
-from myproject.models import Users
+from myproject.models import Users, Jobs
 
 from myproject import check_cat, detect
 from myproject.media.handle_media import handle
@@ -38,6 +39,7 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 # def main():
 #     return render_template('employee_main.html')
 
+<<<<<<< HEAD
 # @employee.route('/nearby_jobs')
 # @login_required
 # @check_cat
@@ -49,6 +51,20 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 #     location = geolocator.reverse(lat,long)
 #     jobs = Jobs.query.search(location.address)
 #     return render_template('nearby_jobs.html',jobs=jobs)
+=======
+@employee.route('/nearby_jobs')
+@login_required
+@check_cat
+def nearby_jobs():
+    coords = request.args.get('coords')
+    lat = coords.split(' ')[0]
+    long = coords.split(' ')[1]
+    geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
+                                      'like Gecko) Chrome/75.0.3770.100 Safari/537.36')
+    location = geolocator.reverse(lat, long)
+    jobs = Jobs.query.search(location.address)
+    return render_template('nearby_jobs.html', jobs=jobs)
+>>>>>>> 7c31a97da4897940b87ce32f61f583dbbe4b7ee9
 
 
 @employee.route('/register', methods=['GET', 'POST'])
@@ -71,10 +87,11 @@ def register():
         message = Message("confirmation code", sender='jouefgamal46@gmail.com',
                           recipients=[form.email.data])  # --------       change it to the domain account
         message.body = f'your confirmation code: {session["code"]} '
-        message.html = render_template('confirmation_code.html')
+        message.html = render_template('employee_confirmation.html')
         mail.send(message)
         session['confirm'] = True
-    return render_template('register.html', form=form)
+        flash('check your email to verify your account')
+    return render_template('employee_register.html', form=form)
 
 
 @employee.route('/confirmation')
@@ -86,7 +103,7 @@ def confirmation():
         if confirm == session['code']:
             user = Users(email=session['email'], username=session['username'], password=session['password'],
                          address_street=session['address_street'], address_city=session['address_city'],
-                         address_province=session['address_province'],
+                         address_province=session['address_province'],phone_number=session['phone_number'],
                          address_country=session['address_country'], male=session['gender'], type_of_account=False)
             try:
                 db.session.add(user)
@@ -128,7 +145,8 @@ def search():
     if not search_text:
         abort(404)
     jobs = Jobs.query.search(search_text).all()
-    return render_template('search.html',jobs=jobs)
+    return render_template('search.html', jobs=jobs)
+
 
 @employee.route('/apply')
 @login_required
@@ -143,4 +161,4 @@ def apply():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
-    return render_template('apply.html',job=job)
+    return render_template('apply.html', job=job)

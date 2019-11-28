@@ -4,9 +4,8 @@
     <meta charset="utf-8">
     <title>{% block title %} Jobs {% endblock %}</title>
     {% block links %}
-<!--    <link rel="stylesheet" href="/static/css/master.css">-->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="static/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="static/css/master.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     {% endblock %}
   </head>
   <body>
@@ -40,8 +39,8 @@
       <div class="jumbotron">
     {% block jumbotron %}
     <h1>the best way to find jobs instansouely</h1>
-    <a href="{{ url_for('employer.register')}}"><button type="button" class="btn btn-primary" name="button">i am searching for a job</button></a>
-    <a href="{{ url_for('employee.register') }}"><button type="button" class="btn btn-primary" name="button">post a job</button></a>
+    <a href="{{ url_for('employee.register') }}"><button type="button" class="btn btn-primary" name="button">i am searching for a job</button></a>
+    <a href="{{ url_for('employer.register')}}"><button type="button" class="btn btn-primary" name="button">post a job</button></a>
     {% endblock %}
       </div>
     </div>

@@ -58,14 +58,14 @@ class Jobs(db.Model):
     # images = db.Column(db.Text)
     # coordinates_Latitude = db.Column(db.String(20))
     # coordinates_Longitude = db.Column(db.String(20))
-    # address_in_letters = db.Column(db.S)
-    phone_for_contact = db.Column(db.String(20))
-    address_of_job = db.Column(db.Text)
+    # address_in_letters = db.Column(db.String(20))
+    phone_for_contact = db.Column(db.String(20), nullable=False)
+    address_of_job = db.Column(db.Text, nullable=False)
     # address_street = db.Column(db.String(20), nullable=False)
     # address_city = db.Column(db.String(15), nullable=False)
     address_province = db.Column(db.String(20), nullable=False)
     address_country = db.Column(db.String(15), nullable=False)
-    applied_for_this_job = db.Column(db.Integer)
+    applied_for_this_job = db.Column(db.Integer, default=0)
 
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
