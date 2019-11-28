@@ -11,6 +11,8 @@ from myproject import detect, random_code, mail, db
 from myproject.main.forms import ResetForm, Login, FormRecover
 from myproject.models import Users
 
+from myproject import check_cat
+
 mained = Blueprint('mained', __name__, template_folder='temp')
 
 

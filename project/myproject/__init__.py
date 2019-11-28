@@ -9,7 +9,7 @@ from flask_login import LoginManager, current_user
 from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from flask_googlemaps import GoogleMaps
+# from flask_googlemaps import GoogleMaps
 import flask_whooshalchemy as wa
 
 app = Flask(__name__)
@@ -17,7 +17,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'My_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://codeXz:hpprobook450g3*@127.0.0.1/capstone'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['GOOGLEMAPS_KEY'] = 'AIzaSyDhCWI6M6yqMrDHBLxxTqKgfzZ-iTjaV9o'
+# app.config['GOOGLEMAPS_KEY'] = 'AIzaSyDhCWI6M6yqMrDHBLxxTqKgfzZ-iTjaV9o'
 # --------------- BUILD
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -30,7 +30,7 @@ limiter = Limiter(
 )
 
 # ----- GoogleMaps
-GoogleMaps(app)
+# GoogleMaps(app)
 
 # ----- Mail ----
 app.config.update(
@@ -86,13 +86,11 @@ def check_cat(f):
 
 
 # ----- importing Blueprints
-from myproject.employee.views import employee
-from myproject.employer.view import employer
-from myproject.main.main import mained
-
-# ----------------- REGISTER_THE_BLUEPRINT
-app.register_blueprint(employee)
-app.register_blueprint(employer)
-app.register_blueprint(mained)
-
-
+# from myproject.employee.views import employee
+# from myproject.employer.view import employer
+# from myproject.main.main import mained
+#
+# # ----------------- REGISTER_THE_BLUEPRINT
+# app.register_blueprint(employee)
+# app.register_blueprint(employer)
+# app.register_blueprint(mained)
