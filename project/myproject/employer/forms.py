@@ -119,10 +119,75 @@ class CreateJob(FlaskForm):
     # coordinates_Latitude = StringField('latitude')
     # coordinates_Longitude = StringField('longitude')
     # media = FileField(validators=[FileAllowed(['jpg', 'png', 'gif', 'mp4', 'mkv'])])
-    phone_number = StringField('contact for the job'. validators=[DataRequired()],render_kw={'placeholder':'phone to be contacted on'})
+    phone_number = StringField('contact for the job', validators=[DataRequired()],render_kw={'placeholder':'phone to be contacted on'})
     street = StringField('address line',validators=[DataRequired()],render_kw={'placeholder':'address'})
     city = StringField('City',validators=[DataRequired()],render_kw={'placeholder':'City'})
-    province = SelectField('province',choices=provinces,validators=[DataRequired()])
+    province = SelectField('province',choices= [('Asyut Governorate', 'Asyut Governorate'),
+                                                                      ('Aswan Governorate', 'Aswan Governorate'), (
+                                                                          "Alexandria Governorate",
+                                                                          "Alexandria Governorate"), (
+                                                                          'Beheira Governorate',
+                                                                          'Beheira Governorate'),
+                                                                      ('Beni Suef Governorate',
+                                                                       'Beni Suef Governorate'),
+                                                                      ('Cairo Governorate', 'Cairo Governorate'), (
+                                                                          'Dakahlia Governorate',
+                                                                          'Dakahlia Governorate'), (
+                                                                          'Damietta Governorate',
+                                                                          'Damietta Governorate'),
+                                                                      ('Faiyum Governorate', 'Faiyum Governorate'),
+                                                                      (
+                                                                          'Gharbia Governorate',
+                                                                          'Gharbia Governorate'),
+                                                                      ('Giza Governorate', 'Giza Governorate'), (
+                                                                          'Ismailia Governorate',
+                                                                          'Ismailia Governorate'), (
+                                                                          'Kafr el-Sheikh Governorate',
+                                                                          'Kafr el-Sheikh Governorate'),
+                                                                      ('Luxor Governorate', 'Luxor Governorate'), (
+                                                                          'Matrouh Governorate',
+                                                                          'Matrouh Governorate'),
+                                                                      ('Minya Governorate', 'Minya Governorate'), (
+                                                                          'Monufia Governorate',
+                                                                          'Monufia Governorate'),
+                                                                      ('New Valley Governorate',
+                                                                       'New Valley Governorate'), (
+                                                                          'North Sinai Governorate',
+                                                                          'North Sinai Governorate'), (
+                                                                          'Port Said Governorate',
+                                                                          'Port Said Governorate'), (
+                                                                          'Qalyubia Governorate',
+                                                                          'Qalyubia Governorate'),
+                                                                      ('Qena Governorate', 'Qena Governorate'), (
+                                                                          'Red Sea Governorate',
+                                                                          'Red Sea Governorate'),
+                                                                      ('Sohag Governorate', 'Sohag Governorate'), (
+                                                                          'South Sinai Governorate',
+                                                                          'South Sinai Governorate'),
+                                                                      ('Suez Governorate', 'Suez Governorate'), (
+                                                                          'Al Hudud ash Shamaliyah',
+                                                                          'Al Hudud ash Shamaliyah'),
+                                                                      ('Al Bahah', 'Al Bahah'),
+                                                                      ('Al Jawf', 'Al Jawf'),
+                                                                      ('Al Madinah', 'Al Madinah'),
+                                                                      ('Al Qasim', 'Al Qasim'),
+                                                                      ('Ar Riyad', 'Ar Riyad'),
+                                                                      ('Ash Sharqiyah', 'Ash Sharqiyah'),
+                                                                      ('Asir', 'Asir'), ('Hail', 'Hail'),
+                                                                      ('Jizan', 'Jizan'), ('Makkah', 'Makkah'),
+                                                                      ('Najran', 'Najran'), ('Tabuk', 'Tabuk'),
+                                                                      ('Ajlun', 'Ajlun'),
+                                                                      ('Al Aqabah', 'Al Aqabah'),
+                                                                      ('Al Balqa', 'Al Balqa'),
+                                                                      ('Al Karak', 'Al Karak'),
+                                                                      ('Al Mafraq', 'Al Mafraq'),
+                                                                      ('Amman', 'Amman'),
+                                                                      ('At Tafilah', 'At Tafilah'),
+                                                                      ('Az Zarqa', 'Az Zarqa'), ('Irbid', 'Irbid'),
+                                                                      ('Jarash', 'Jarash'), ('Madaba', 'Madaba'),
+                                                                      ('Maan', 'Maan')
+
+                                                                      ],validators=[DataRequired()])
     country = SelectField('country', choices=[('Eg', 'Egypt'), ('Jo', 'Jordan'), ('sa', 'Saudi')])
     submit = SubmitField('Post')
 

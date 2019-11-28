@@ -46,8 +46,8 @@ mail = Mail(app)
 # ---------------- LOGIN
 login = LoginManager()
 login.init_app(app)
-login.login_view = 'main.login'
-login.refresh_view = 'main.change'
+login.login_view = 'mained.login'
+login.refresh_view = 'mained.change'
 # login.session_protection = "strong"
 
 

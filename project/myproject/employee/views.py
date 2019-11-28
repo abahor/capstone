@@ -38,17 +38,17 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 # def main():
 #     return render_template('employee_main.html')
 
-@employee.route('/nearby_jobs')
-@login_required
-@check_cat
-def nearby_jobs():
-    coords = request.args.get('coords')
-    lat = coords.split(' ')[0]
-    long = coords.split(' ')[1]
-    geolocator = Nominatim(user-agent='my user_agent ') # 000000000000000000000000000
-    location = geolocator.reverse(lat,long)
-    jobs = Jobs.query.search(location.address)
-    return render_template('nearby_jobs.html',jobs=jobs)
+# @employee.route('/nearby_jobs')
+# @login_required
+# @check_cat
+# def nearby_jobs():
+#     coords = request.args.get('coords')
+#     lat = coords.split(' ')[0]
+#     long = coords.split(' ')[1]
+#     # geolocator = Nominatim(user-agent='my user_agent ') # 000000000000000000000000000
+#     location = geolocator.reverse(lat,long)
+#     jobs = Jobs.query.search(location.address)
+#     return render_template('nearby_jobs.html',jobs=jobs)
 
 
 @employee.route('/register', methods=['GET', 'POST'])
