@@ -1,6 +1,9 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
-<button href='{{ url_for(employee.nearby_jobs) }}' type="button" name="button">find job near me</button>
+<!--<button href='{{ url_for("employee.nearby_jobs") }}' type="button" name="button">find job near me</button>-->
+{% if not jobs %}
+  <div class="alert alert-danger">no results where found</div>
+{% endif %}
 {% for job in jobs %}
 <a href="{{ url_for('main.show_details',job_id=job.id ) }}">
   <div class="main-job">

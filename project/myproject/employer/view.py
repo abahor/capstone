@@ -37,7 +37,7 @@ def register():
         session['employer_address_country'] = form.country.data
         session['employer_code'] = random_code()
         message = Message('confirmation code', sender='jousefgamal46@gmail.com', recipients=[form.email.data])
-        message.body = f'your confirmation code: {session["code"]}'
+        message.body = f'your confirmation code: {session["employer_code"]}'
         message.html = render_template('employer_confirmation.html')
         mail.send(message)
         session['employer_confirm'] = True
@@ -55,10 +55,14 @@ def confirmation():
     if session['employer_confirm']:
         if confirm == session['employer_code']:
             print('sad')
-            user = Users(email=session['employer_email'], username=session['employer_username'], password=session['employer_password'],
-                         address_province=session['employer_address_province'], phone_number=session['employer_phone_number'],
-                         address_street=session['employer_address_street'], address_city=session['employer_address_city'],
-                         address_country=session['employer_address_country'], male=session['employer_gender'], type_of_account=True)
+            user = Users(email=session['employer_email'], username=session['employer_username'],
+                         password=session['employer_password'],
+                         address_province=session['employer_address_province'],
+                         phone_number=session['employer_phone_number'],
+                         address_street=session['employer_address_street'],
+                         address_city=session['employer_address_city'],
+                         address_country=session['employer_address_country'], male=session['employer_gender'],
+                         type_of_account=True)
             try:
                 db.session.add(user)
                 print('ddd')
@@ -74,24 +78,34 @@ def confirmation():
         return abort(404)
 
 
-@employer.route('/update')
+@employer.route('/update', methods=['post', 'get'])
 @login_required
 @check_cat
 def update():
     form = UpdateForm()
     if form.validate_on_submit():
+        print('sad')
         current_user.username = form.username.data
+        current_user.phone_for_contact = form.phone_number.data
         current_user.address_street = form.street.data
         current_user.address_city = form.city.data
         current_user.address_province = form.province.data
         current_user.address_country = form.country.data
-        current_user.profile_pic = handle(form.picture)
+        if form.picture.data:
+            current_user.profile_pic = handle(form.picture.data)
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            return render_template('something_went_wrong.html')
     # ----------------------     filling the form with the current_user data
     form.username.data = current_user.username
     form.street.data = current_user.address_street
     form.city.data = current_user.address_city
     form.province.data = current_user.address_province
     form.country.data = current_user.address_country
+    form.phone_number.data = current_user.phone_number
+    print(form.errors)
     return render_template('employer_update.html', form=form)
 
 
@@ -122,20 +136,22 @@ def account():
     return render_template('employer_account.html')
 
 
-@employer.route('/post_job')
+@employer.route('/post_job', methods=['post', 'get'])
 @login_required
 @check_cat
 def post_job():
     form = CreateJob()
     if form.validate_on_submit():
         new_job = Jobs(text=form.text.data, title=form.title.data, user_id=current_user.id,
-                       address_province=form.address_province.data,
-                       address_country=form.address_country.data, phone_number=form.phone_number.data,
+                       address_province=form.province.data,
+                       address_country=form.country.data, phone_number=form.phone_for_contact.data,
                        location=form.street.data + ' ' + form.city.data)
         try:
+            print('sad')
             db.session.add(new_job)
             db.session.commit()
-            return render_template('successful_job_added.html')
+            flash('job created successfully')
+            return render_template('employer_job_successfully_added.html')
         except Exception as e:
             db.session.rollback()
             return render_template('something_went_wrong.html', e=e)

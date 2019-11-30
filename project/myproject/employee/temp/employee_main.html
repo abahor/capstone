@@ -1,5 +1,70 @@
 {% extends 'main.html' %}
-{% block content %}
+{% block jumbotron %}
+<div>
+    <h2>find job in your city</h2>
+{#
+    <form method="get" action="{{ url_for('employee.search') }}">
+        <div class="form-group">
+            <input type="search"  name="q" class="form-control" placeholder="where you want your job?">
+        </div>
+            <button class="btn btn-primary">search</button>
+    </form> #}
+</div>
+<div class="form-group">
 
+        <select class="form-control" id="country" name="country" required>
+            <option value="Eg">Egypt</option>
+            <option value="Jo">Jordan</option>
+            <option value="Sa">Saudi</option>
+        </select>
+
+</div>
+<div class="form-group">
+<select class="form-control" id="province" name="province" required>
+    <option value="Asyut Governorate">Asyut Governorate</option>
+    <option value="Aswan Governorate">Aswan Governorate</option>
+    <option value="Alexandria Governorate">Alexandria Governorate</option>
+    <option value="Beheira Governorate">Beheira Governorate</option>
+    <option value="Beni Suef Governorate">Beni Suef Governorate</option>
+    <option value="Cairo Governorate">Cairo Governorate</option>
+    <option value="Dakahlia Governorate">Dakahlia Governorate</option>
+    <option value="Damietta Governorate">Damietta Governorate</option>
+    <option value="Faiyum Governorate">Faiyum Governorate</option>
+    <option value="Gharbia Governorate">Gharbia Governorate</option>
+    <option value="Giza Governorate">Giza Governorate</option>
+    <option value="Ismailia Governorate">Ismailia Governorate</option>
+    <option value="Kafr el-Sheikh Governorate">Kafr el-Sheikh Governorate</option>
+    <option value="Luxor Governorate">Luxor Governorate</option>
+    <option value="Matrouh Governorate">Matrouh Governorate</option><option value="Minya Governorate">Minya Governorate</option><option value="Monufia Governorate">Monufia Governorate</option><option value="New Valley Governorate">New Valley Governorate</option><option value="North Sinai Governorate">North Sinai Governorate</option><option value="Port Said Governorate">Port Said Governorate</option><option value="Qalyubia Governorate">Qalyubia Governorate</option><option value="Qena Governorate">Qena Governorate</option><option value="Red Sea Governorate">Red Sea Governorate</option><option value="Sohag Governorate">Sohag Governorate</option><option value="South Sinai Governorate">South Sinai Governorate</option><option value="Suez Governorate">Suez Governorate</option><option value="Al Hudud ash Shamaliyah">Al Hudud ash Shamaliyah</option><option value="Al Bahah">Al Bahah</option><option value="Al Jawf">Al Jawf</option><option value="Al Madinah">Al Madinah</option><option value="Al Qasim">Al Qasim</option><option value="Ar Riyad">Ar Riyad</option><option value="Ash Sharqiyah">Ash Sharqiyah</option><option value="Asir">Asir</option><option value="Hail">Hail</option><option value="Jizan">Jizan</option><option value="Makkah">Makkah</option><option value="Najran">Najran</option><option value="Tabuk">Tabuk</option><option value="Ajlun">Ajlun</option><option value="Al Aqabah">Al Aqabah</option><option value="Al Balqa">Al Balqa</option><option value="Al Karak">Al Karak</option><option value="Al Mafraq">Al Mafraq</option><option value="Amman">Amman</option><option value="At Tafilah">At Tafilah</option><option value="Az Zarqa">Az Zarqa</option><option value="Irbid">Irbid</option><option value="Jarash">Jarash</option>
+    <option value="Madaba">Madaba</option>
+    <option value="Maan">Maan</option>
+</select>
+</div>
+
+<div class="main">
+    <div class="accordion" id="accordionExample">
+     <template id="sad">
+      <div class="card" style="margin-bottom:12px">
+        <div class="card-header" id="headingOne">
+          <h2 class="mb-0">
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Collapsible Group Item #1
+            </button>
+          </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+          <div class="card-body">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+          </div>
+
+            <a class="link" href=""><button class="btn btn-secondary btn-lg btn-block">apply</button></a>
+        </div>
+      </div>
+            </template>
+    </div>
+</div>
+<!--<script src="/static/js/eliminate.js"></script>-->
+<script src="/static/js/search.js"></script>
 
 {% endblock %}

@@ -7,6 +7,7 @@ from flask import current_app
 
 
 def handle(data):
+    print(data)
     ext = data.filename.split('.')[-1]
     data = Image.open(data)
     output = (200, 200)

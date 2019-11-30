@@ -9,7 +9,7 @@ from werkzeug.security import generate_password_hash
 
 from myproject import detect, random_code, mail, db
 from myproject.main.forms import ResetForm, Login, FormRecover
-from myproject.models import Users
+from myproject.models import Users, Jobs
 
 from myproject import check_cat
 
@@ -53,14 +53,14 @@ def forgot_password():
     form = ResetForm()
     if form.validate_on_submit():
         print('good')
-        u = Users.query.filter_by('email' == form.email.data).first()
+        u = Users.query.filter_by(email=form.email.data).first()
         if u is None:
             flash(Markup("email doesn't exist try to <a href='/'>register</a>"))
         else:
             session['user'] = u.id
             message = Message('confirmation code', sender='jousefgamal46@gmail.com', recipients=[form.email.data])
             session['reset_code'] = random_code()
-            message.body = f'your reset code: copy this link and put it in browser {url_for("employer.reset")}?' \
+            message.body = f'your reset code: copy this link and put it in browser {url_for("mained.reset")}?' \
                            f'reset_code={session["reset_code"]}'  # ----- _external for url_for is external
             message.html = render_template('reset_email.html')
             mail.send(message)
@@ -70,7 +70,7 @@ def forgot_password():
     return render_template('forget_password.html', form=form)
 
 
-@mained.route('/reset')
+@mained.route('/reset', methods=['post', 'get'])
 def reset():
     if current_user.is_authenticated:
         return redirect(detect(current_user, 'update'))
@@ -92,15 +92,16 @@ def reset():
     return redirect('/')
 
 
-@mained.route('/change')
+@mained.route('/change', methods=['post', 'get'])
 @login_required
 def change():
     form = FormRecover()
     if form.validate_on_submit():
         current_user.password = generate_password_hash(form.password.data)
         db.session.commit()
+        flash('successfully changed your password')
         return render_template('successful_changed.html')
-    return render_template('change.html')
+    return render_template('change.html', form=form)
 
 
 @mained.route('/get_province_for_country')
@@ -136,12 +137,13 @@ def main():
 def about():
     return 'sad'
 
-@mained.route('/keep_job')
+
+@mained.route('/keep_job', methods=['post'])
 @login_required
-@check_cat
 def keep_job():
     id_of_the_job = request.args.get('job_id')
-    if not job_id:
+    print(id_of_the_job)
+    if not id_of_the_job:
         return abort(404)
     job = Jobs.query.get(id_of_the_job)
     if not job:
@@ -154,9 +156,8 @@ def keep_job():
     return ''
 
 
-@mained.route('/delete_this_job')
+@mained.route('/delete_this_job', methods=['post'])
 @login_required
-@check_cat
 def delete_this_job():
     id_of_job = request.args.get('job_id')
     if not id_of_job:
@@ -168,16 +169,32 @@ def delete_this_job():
         db.session.delete(job)
         db.session.commit()
     else:
-        db.session.rollback()
-        abort(404)
-    return ''
+        # db.session.rollback()
+        return abort(404)
+    return 'deleted'
+
 
 @mained.route('/show_details')
 @login_required
-@check_cat
 def show_details():
     job_id = request.args.get('job_id')
     job = Jobs.query.get(job_id)
     if not job:
         return abort(404)
-    return render_template('show_details.html')
+    job.applied_for_this_job += 1
+    db.session.commit()
+    return render_template('show_details.html', job=job)
+
+
+@mained.route('/get_job')
+@login_required
+def get_job():
+    city = request.args.get('city')
+    jobs = Jobs.query.filter_by(address_province=city).all()
+    o = []
+    if not jobs:
+        return abort(404)
+    for i in jobs:
+        ob = {'title': i.title, 'text': i.text, 'link': '/show_details?job_id=' + str(i.id)}
+        o.append(ob)
+    return jsonify(o)

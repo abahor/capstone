@@ -1,54 +1,60 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Main</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
+{% extends 'main.html' %}
+{% block title %}Main {% endblock %}
+    {%  block jumbotron %}
+<h5 style="display:inline-block">{{ current_user.username }}</h5>
+<a href="{{ url_for('employer.post_job') }}"><button class="btn btn-outline-warning float-right"> post a job </button></a>
+<h6>Jobs that you have posted</h6>
+<div id="main_job">
         {% for sad in jobs %}
-        <div id='{{ sad.id }}'>
+        <div id='{{ sad.id }}' style="margin-bottom:5vh">
 
-
-            <h3>{{ sad.title }}</h3>
-            <p>{{ sad.text }}</p>
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <h5 class="card-title">{{ sad.title }}</h5>
+<!--    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+    <p class="card-text">{{ sad.text }}</p>
+<!--    <a href="#" class="card-link">Card link</a>-->
+<!--    <a href="#" class="card-link">Another link</a>-->
+  </div>
+</div>
             {% if sad.applied_for_this_job >= 1 %}
-                <p style="color:red">some on had applied for this job is it available </p>
+            <div id="{{ sad.id }}_keep">
+                <p style="color:red">someone had applied for this job, Is it still available?</p>
                 <div class="">
-                  <button type="button" class="btn btn-danger" name="button" onclick="" onclick="keep({{ sad.id }})">yes</button>
-                  <button type="button" class="btn btn-danger" name="button" onclick="delete({{ sad.id }},e)">No</button>
+                  <button type="button" class="btn btn-danger" name="button" onclick="keep('{{ sad.id }}')">yes</button>
+                  <button type="button" class="btn btn-danger" name="button" onclick="delete_post('{{ sad.id }}')">No</button>
                 </div>
+              </div>
             {% endif %}
         </div>
         {% endfor %}
-
-      </div>
     </div>
-    <script src="/static/js/employee_main.js" charset="utf-8"></script>
+<!--    <script src="/static/js/employee_main.js" charset="utf-8"></script>-->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script type="text/javascript">
-      function keep(id,e){
-        var xh = new XMLHttpRequest();
-        xh.onreadystatechange = function(){
-          if (this.status == 200 && this.readyState == 4 ){
-              var t = e.parentNode;
-              t.remove();
-              return false;
-          }
-        }
-        xh.open('POST','/keep_job?job_id='+ id )
-        xh.send()
-      }
-      function delete(id){
-        var xh = new XMLHttpRequest();
-        xh.onreadystatechange = function(){
-          var o = document.getElementById(id);
-          o.parentNode.removeChild(o)
-          return false;
-      }
-      xh.open('POST','/delete_this_job?job_id='+id)
-      xh.send()
-    }
+<!--      function keep(id){-->
+<!--        var xh = new XMLHttpRequest();-->
+<!--        xh.onreadystatechange = function(){-->
+<!--          if (this.status == 200 && this.readyState == 4 ){-->
+<!--              var t = e.parentNode;-->
+<!--              t.remove();-->
+<!--              return false;-->
+<!--          }-->
+<!--        }-->
+<!--        xh.open('POST','/keep_job?job_id='+ id )-->
+<!--        xh.send()-->
+<!--      }-->
+<!--      function delete(id){-->
+<!--        var xh = new XMLHttpRequest();-->
+<!--        xh.onreadystatechange = function(){-->
+<!--          var o = document.getElementById(id);-->
+<!--          o.parentNode.removeChild(o)-->
+<!--          return false;-->
+<!--      }-->
+<!--      xh.open('POST','/delete_this_job?job_id='+id)-->
+<!--      xh.send()-->
+<!--    }-->
     </script>
-  </body>
-</html>
+
+<script src="/static/js/employer_main.js" charset="utf-8"></script>
+{% endblock %}

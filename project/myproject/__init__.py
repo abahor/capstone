@@ -48,6 +48,9 @@ login = LoginManager()
 login.init_app(app)
 login.login_view = 'mained.login'
 login.refresh_view = 'mained.change'
+login.needs_refresh_message = (
+    u"To protect your account, please reauthenticate to access this page."
+)
 # login.session_protection = "strong"
 
 
@@ -86,11 +89,11 @@ def check_cat(f):
 
 
 # ----- importing Blueprints
-# from myproject.employee.views import employee
-# from myproject.employer.view import employer
-# from myproject.main.main import mained
-#
-# # ----------------- REGISTER_THE_BLUEPRINT
-# app.register_blueprint(employee)
-# app.register_blueprint(employer)
-# app.register_blueprint(mained)
+from myproject.employee.views import employee
+from myproject.employer.view import employer
+from myproject.main.main import mained
+
+# ----------------- REGISTER_THE_BLUEPRINT
+app.register_blueprint(employee)
+app.register_blueprint(employer)
+app.register_blueprint(mained)

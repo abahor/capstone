@@ -33,13 +33,14 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 #     return render_template('login.html', form=form)
 
 
-# @employee.route('/main')
-# @login_required
-# @check_cat
-# def main():
-#     return render_template('employee_main.html')
+@employee.route('/main')
+@login_required
+@check_cat
+def main():
+    return render_template('employee_main.html')
 
-<<<<<<< HEAD
+
+# <<<<<<< HEAD
 # @employee.route('/nearby_jobs')
 # @login_required
 # @check_cat
@@ -51,7 +52,7 @@ employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/
 #     location = geolocator.reverse(lat,long)
 #     jobs = Jobs.query.search(location.address)
 #     return render_template('nearby_jobs.html',jobs=jobs)
-=======
+# =======
 @employee.route('/nearby_jobs')
 @login_required
 @check_cat
@@ -64,7 +65,9 @@ def nearby_jobs():
     location = geolocator.reverse(lat, long)
     jobs = Jobs.query.search(location.address)
     return render_template('nearby_jobs.html', jobs=jobs)
->>>>>>> 7c31a97da4897940b87ce32f61f583dbbe4b7ee9
+
+
+# >>>>>>> 7c31a97da4897940b87ce32f61f583dbbe4b7ee9
 
 
 @employee.route('/register', methods=['GET', 'POST'])
@@ -75,22 +78,24 @@ def register():
 
     form = RegistrationForm()
     if form.validate_on_submit():
-        session['email'] = form.email.data
-        session['username'] = form.username.data
-        session['password'] = form.password.data
-        session['address_street'] = form.street.data
-        session['address_city'] = form.city.data
-        session['address_province'] = form.province.data
-        session['address_country'] = form.country.data
-        session['gender'] = form.gender.data
-        session['code'] = random_code()
+        session['employee_email'] = form.email.data
+        session['employee_username'] = form.username.data
+        session['employee_password'] = form.password.data
+        session['employee_phone_number'] = form.phone_number.data
+        session['employee_address_street'] = form.street.data
+        session['employee_address_city'] = form.city.data
+        session['employee_address_province'] = form.province.data
+        session['employee_address_country'] = form.country.data
+        session['employee_gender'] = form.gender.data
+        session['employee_code'] = random_code()
         message = Message("confirmation code", sender='jouefgamal46@gmail.com',
                           recipients=[form.email.data])  # --------       change it to the domain account
-        message.body = f'your confirmation code: {session["code"]} '
+        message.body = f'your confirmation code: {session["employee_code"]} '
         message.html = render_template('employee_confirmation.html')
         mail.send(message)
-        session['confirm'] = True
+        session['employee_confirm'] = True
         flash('check your email to verify your account')
+    print(form.errors)
     return render_template('employee_register.html', form=form)
 
 
@@ -98,24 +103,34 @@ def register():
 def confirmation():
     if current_user.is_authenticated:
         return abort(404)
-    confirm = request.args.get('code')
-    if session['confirm']:
-        if confirm == session['code']:
-            user = Users(email=session['email'], username=session['username'], password=session['password'],
-                         address_street=session['address_street'], address_city=session['address_city'],
-                         address_province=session['address_province'],phone_number=session['phone_number'],
-                         address_country=session['address_country'], male=session['gender'], type_of_account=False)
+    confirm = request.args.get('employee_code')
+    if session['employee_confirm']:
+        print(session['employee_code'])
+        if confirm == session['employee_code']:
+            user = Users(email=session['employee_email'], username=session['employee_username'],
+                         password=session['employee_password'],
+                         address_street=session['employee_address_street'],
+                         address_city=session['employee_address_city'],
+                         address_province=session['employee_address_province'],
+                         phone_number=session['employee_phone_number'],
+                         address_country=session['employee_address_country'], male=session['employee_gender'],
+                         type_of_account=False)
             try:
                 db.session.add(user)
                 db.session.commit()
-                return render_template('successful_added.html')
-            except:
+                flash('account has been verified')
+                return render_template('employee_successful_added.html')
+            except Exception as e:
                 db.session.rollback()
+                return render_template('somethong_Went_wrong', e=e)
+        else:
+            print('sad')
+            return abort(404)
     else:
         return redirect(url_for('employee.register'))
 
 
-@employee.route('/update')
+@employee.route('/update', methods=['post', 'get'])
 @login_required
 @check_cat
 def update():
@@ -127,14 +142,17 @@ def update():
         current_user.address_city = form.city.data
         current_user.address_province = form.province.data
         current_user.address_country = form.country.data
-        current_user.profile_pic = handle(form.picture)
+        if form.picture.data:
+            current_user.profile_pic = handle(form.picture.data)
+        db.session.commit()
     # ----------------------     filling the form with the current_user data
     form.username.data = current_user.username
     form.street.data = current_user.address_street
     form.city.data = current_user.address_city
+    form.phone_number.data = current_user.phone_number
     form.province.data = current_user.address_province
     form.country.data = current_user.address_country
-    return render_template('update.html', form=form)
+    return render_template('employee_update.html', form=form)
 
 
 @employee.route('/search')
@@ -162,3 +180,10 @@ def apply():
     except Exception as e:
         db.session.rollback()
     return render_template('apply.html', job=job)
+
+
+@employee.route('/account')
+@login_required
+@check_cat
+def account():
+    return render_template('employee_account.html')

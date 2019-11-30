@@ -1,0 +1,9 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+{% for i in get_flashed_messages() %}
+<div class="alert alert-secondary">
+    {{ i }}
+</div>
+
+{% endfor %}
+{% endblock %}

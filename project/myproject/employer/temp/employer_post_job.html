@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% block jumbotron %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<form method="post">
+    {{ form.hidden_tag() }}
+<div class="form-group">
+    {{ form.title.label }}
+    {{ form.title(class='form-control') }}
+</div>
+<div class="form-group">
+    {{ form.text.label }}
+    {{ form.text }}
+</div>
+<div class="form-group">
+    {{ form.phone_for_contact.label }}
+    {{ form.phone_for_contact(class='form-control') }}
+</div>
+<div class="form-group">
+    {{ form.country.label }}
+    {{ form.country(class='form-control') }}
+</div>
+<div class="form-group">
+    {{ form.province.label }}
+    {{ form.province(class='form-control') }}
+</div>
+<div class="form-group">
+    {{ form.city.label }}
+    {{ form.city(class='form-control') }}
+</div>
+<div class="form-group">
+    {{ form.street.label }}
+    {{ form.street(class='form-control') }}
+</div>
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+<script src="/static/js/eliminate.js" charset="utf-8"></script>
+{% endblock %}

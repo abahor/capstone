@@ -79,7 +79,7 @@ class Jobs(db.Model):
         # self.coordinates_Latitude = coordinates_Latitude
         # self.coordinates_Longitude = coordinates_Longitude
         self.phone_for_contact = phone_number
-        self.location = location
+        self.address_of_job = location
         self.address_province = address_province
         self.address_country = address_country
 

@@ -28,5 +28,63 @@ function myFunction(list) {
       province.options[province.options.length] = new Option(list['states'][variable],list['states'][variable],false,false)
     };
     // province.options[province.options.length + 1] = new Option(variable,variable,false,false)
-  }
+  };
 // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var scroller = document.getElementById('sad')
+var main = document.getElementById('accordionExample')
+province.addEventListener('change',function () {
+  var xm = new XMLHttpRequest();
+  xm.onreadystatechange = function (){
+    if (this.readyState == 4 && this.status == 200) {
+    console.log('it works');
+    myFunction(this);
+    }
+    if (this.status == 404) {
+      main.innerText = ''
+    }
+  }
+  xm.open('GET','/get_job?city='+ province.value )
+  xm.send()
+});
+
+function myFunction (data) {
+    var ter = JSON.parse(data.response)
+    console.log(ter)
+    main.innerText = ''
+    try {
+      for (i of ter) {
+              let template_clone = scroller.content.cloneNode(true);
+              template_clone.querySelector('.btn-link').innerHTML = i.title
+              template_clone.querySelector('.card-body').innerHTML = i.text
+              template_clone.querySelector('.link').href = i.link
+              main.appendChild(template_clone);
+      }
+    } catch (e) {
+      return main.innerHTML = '';
+    }  finally {
+
+    }
+
+
+}
