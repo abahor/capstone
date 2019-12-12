@@ -28,8 +28,9 @@ function myFunction(list) {
       province.options[province.options.length] = new Option(list['states'][variable],list['states'][variable],false,false)
     };
     // province.options[province.options.length + 1] = new Option(variable,variable,false,false)
-  };
+  }
 // }
+
 
 
 
@@ -53,7 +54,8 @@ function myFunction(list) {
 
 var scroller = document.getElementById('sad')
 var main = document.getElementById('accordionExample')
-province.addEventListener('change',function () {
+var search_button = document.getElementById('search_button')
+search.addEventListener('click',function () {
   var xm = new XMLHttpRequest();
   xm.onreadystatechange = function (){
     if (this.readyState == 4 && this.status == 200) {
