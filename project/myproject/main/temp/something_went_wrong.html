@@ -1,6 +1,10 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
 <div class="alert alert-danger">
-    {{ e }}
+    {% if e %}
+        {{ e }}
+    {% else %}
+        something went wrong try again later
+    {% endif %}
 </div>
 {% endblock %}

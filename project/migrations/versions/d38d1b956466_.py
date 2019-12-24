@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 99fd97704396
+Revision ID: d38d1b956466
 Revises: 
-Create Date: 2019-11-25 17:29:55.687171
+Create Date: 2019-12-20 13:23:28.139956
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '99fd97704396'
+revision = 'd38d1b956466'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,14 +35,12 @@ def upgrade():
     )
     op.create_index(op.f('ix_users_email'), 'users', ['email'], unique=True)
     op.create_table('jobs',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('title', sa.Text(), nullable=False),
     sa.Column('text', sa.Text(), nullable=True),
-    sa.Column('phone_for_contact', sa.String(length=20), nullable=True),
-    sa.Column('address_of_job', sa.Text(), nullable=True),
-    sa.Column('address_street', sa.String(length=20), nullable=False),
-    sa.Column('address_city', sa.String(length=15), nullable=False),
+    sa.Column('phone_for_contact', sa.String(length=20), nullable=False),
+    sa.Column('address_of_job', sa.Text(), nullable=False),
     sa.Column('address_province', sa.String(length=20), nullable=False),
     sa.Column('address_country', sa.String(length=15), nullable=False),
     sa.Column('applied_for_this_job', sa.Integer(), nullable=True),

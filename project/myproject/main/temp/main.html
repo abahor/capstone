@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>{% block title %} Jobs {% endblock %}</title>
@@ -16,8 +16,8 @@
   <ol class="breadcrumb">
 
     <h5 class="breadcrumb-item" style="margin:0">Hire me</h5>
-    <li class="breadcrumb-item"><a href="{{ url_for('mained.main') }}">Home</a></li>
-    <li class="breadcrumb-item"><a href="{{ url_for('mained.about') }}">about</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('mained.main') }}">{{ _('Home') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{ url_for('mained.about') }}">{{ _('about us') }}</a></li>
 
 {% if current_user.is_authenticated %}
   {% if current_user.employer %}
@@ -25,9 +25,9 @@
   {% else %}
       <li class="breadcrumb-item" ><a href="{{ url_for('employee.account')}}">{{ current_user.username }}</a></li>
   {% endif %}
-  <button class="float=right login"><a href="{{ url_for('mained.logout') }}">Logout</a></button>
+      <button class="float=right login" style="width: fit-content;"><a href="{{ url_for('mained.logout') }}">{{ _('Logout') }}</a></button>
   {% else %}
-<button class="float=right login"><a href="{{ url_for('mained.login') }}">Login</a></button>
+      <button class="float=right login" style="width: fit-content;"><a href="{{ url_for('mained.login') }}">{{ _('Login') }}</a></button>
 {% endif %}
   </ol>
 
@@ -37,12 +37,12 @@
 
     {% endblock %}
     {% block content %}
-<div class="container">
-      <div class="jumbotron">
+<div>
+      <div class="jumbotron" style="background-image:url(/static/media/image_3.jpg)">
     {% block jumbotron %}
-    <h1>the best way to find jobs instantly</h1>
-    <a href="{{ url_for('employee.register') }}"><button type="button" class="btn btn-primary" name="button">i am searching for a job</button></a>
-    <a href="{{ url_for('employer.register') }}"><button type="button" class="btn btn-primary" name="button">post a job</button></a>
+    <h1>{{ _('the best way to find jobs instantly') }}</h1>
+    <a href="{{ url_for('employee.register') }}"><button type="button" class="btn btn-primary" name="button">{{ _('i am searching for a job') }}</button></a>
+    <a href="{{ url_for('employer.register') }}"><button type="button" class="btn btn-primary" name="button">{{ _('post a job') }}</button></a>
     {% endblock %}
       </div>
     </div>

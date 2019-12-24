@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, abort, redirect, session, request, url_for, flash
+from flask_babel import gettext
 from flask_login import current_user, login_required
 from flask_mail import Message
 from myproject import mail, db, detect, random_code
@@ -25,7 +26,6 @@ def register():
         return redirect(detect(current_user, 'main'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        print('sad')
         session['employer_email'] = form.email.data
         session['employer_username'] = form.username.data
         session['employer_password'] = form.password.data
@@ -36,12 +36,17 @@ def register():
         session['employer_address_province'] = form.province.data
         session['employer_address_country'] = form.country.data
         session['employer_code'] = random_code()
-        message = Message('confirmation code', sender='jousefgamal46@gmail.com', recipients=[form.email.data])
+        print(session['employer_code'])
+        message = Message('confirmation code', sender='mohsengamal100@gmail.com', recipients=[form.email.data])
         message.body = f'your confirmation code: {session["employer_code"]}'
         message.html = render_template('employer_confirmation.html')
-        mail.send(message)
         session['employer_confirm'] = True
-        flash('check your email to verify your account')
+        try:
+            mail.send(message)
+        except Exception as e:
+            return abort(404, e)
+        # session['employer_confirm'] = True
+        flash(gettext('check your email to verify your account'))
     print(form.errors)
     return render_template('employer_register.html', form=form)
 
@@ -50,9 +55,11 @@ def register():
 def confirmation():
     if current_user.is_authenticated:
         return abort(404)
+    print('----------------------------')
     confirm = request.args.get('code')
     print(confirm)
     if session['employer_confirm']:
+        print('sad')
         if confirm == session['employer_code']:
             print('sad')
             user = Users(email=session['employer_email'], username=session['employer_username'],
@@ -61,16 +68,16 @@ def confirmation():
                          phone_number=session['employer_phone_number'],
                          address_street=session['employer_address_street'],
                          address_city=session['employer_address_city'],
-                         address_country=session['employer_address_country'], male=session['employer_gender'],
+                         address_country=session['employer_address_country'], male=check_gender(session['employer_gender']),
                          type_of_account=True)
-            try:
-                db.session.add(user)
-                print('ddd')
-                db.session.commit()
-                return render_template('employer_successful_added.html')
-            except:
-                db.session.rollback()
-                return abort(404)
+            # try:
+            db.session.add(user)
+            print('ddd')
+            db.session.commit()
+            return render_template('employer_successful_added.html')
+            # except Exception as e:
+            #     db.session.rollback()
+            #     return abort(404, e)
         else:
             session['code'] = ''
             return redirect(url_for('employer.register'))
@@ -95,7 +102,7 @@ def update():
             current_user.profile_pic = handle(form.picture.data)
         try:
             db.session.commit()
-        except:
+        except Exception as e:
             db.session.rollback()
             return render_template('something_went_wrong.html')
     # ----------------------     filling the form with the current_user data
@@ -150,7 +157,7 @@ def post_job():
             print('sad')
             db.session.add(new_job)
             db.session.commit()
-            flash('job created successfully')
+            flash(gettext('job created successfully'))
             return render_template('employer_job_successfully_added.html')
         except Exception as e:
             db.session.rollback()
@@ -159,3 +166,8 @@ def post_job():
     return render_template('employer_post_job.html', form=form)
 
 # @employer.route('')
+def check_gender(d):
+    if d:
+        return True
+    else:
+        return False

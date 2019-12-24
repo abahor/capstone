@@ -18,3 +18,10 @@ width:100%;
 #hide {
     display: none;
 }
+.profile_picture{
+    display:inherit;
+}
+.jumbotron {
+    background-repeat:no-repeat;
+    background-size:cover;
+}

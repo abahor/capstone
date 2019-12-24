@@ -5,7 +5,7 @@
 {#
     <form method="get" action="{{ url_for('employee.search') }}">
         <div class="form-group">
-            <input type="search"  name="q" class="form-control" placeholder="where you want your job?">
+            <input type="search"  name="q" class="form-control" placeholder="{{_('where you want your job?')}}">
         </div>
 
     </form> #}
@@ -13,9 +13,9 @@
 <div class="form-group">
 
         <select class="form-control" id="country" name="country" required>
-            <option value="Eg">Egypt</option>
-            <option value="Jo">Jordan</option>
-            <option value="Sa">Saudi</option>
+            <option value="Eg">{{_('Egypt')}}</option>
+            <option value="Jo">{{_('Jordan')}}</option>
+            <option value="Sa">{{_('Saudi')}}</option>
         </select>
 
 </div>

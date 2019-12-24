@@ -4,7 +4,7 @@
 <p>{{ job.text }}</p>
 <img src="/static/media/{{ job.author.profile_pic }}" alt="">
 <p> {{ job.phone_for_contact }}</p>
-<p>provided by {{ job.author.username }}</p>
+<p>{{_('provided by')}} {{ job.author.username }}</p>
 
 <!--<div class="jumbotron">-->
   <h6>{{ job.address_of_job }}</h6>

@@ -2,27 +2,31 @@
 {% block title %}Main {% endblock %}
     {%  block jumbotron %}
 <h5 style="display:inline-block">{{ current_user.username }}</h5>
-<a href="{{ url_for('employer.post_job') }}"><button class="btn btn-outline-warning float-right"> post a job </button></a>
-<h6>Jobs that you have posted</h6>
+<a href="{{ url_for('employer.post_job') }}"><button class="btn btn-warning float-right">{{_('post a job')}}</button></a>
+<h6>{{_('Jobs that you have posted')}}</h6>
 <div id="main_job">
         {% for sad in jobs %}
         <div id='{{ sad.id }}' style="margin-bottom:5vh">
 
 <div class="card" style="width: 100%;">
   <div class="card-body">
-    <h5 class="card-title">{{ sad.title }}</h5>
+      <div class="">
+        <h5 class="card-title">{{ sad.title }}</h5>
+      </div>
 <!--    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
-    <p class="card-text">{{ sad.text }}</p>
+      <div class="text-body" style="background:#ccc;padding-top:5px;padding-bottom:10px;padding-left:5px;border-radius:3px">
+        <p class="card-text">{{ sad.text }}</p>
+      </div>
 <!--    <a href="#" class="card-link">Card link</a>-->
 <!--    <a href="#" class="card-link">Another link</a>-->
   </div>
 </div>
             {% if sad.applied_for_this_job >= 1 %}
             <div id="{{ sad.id }}_keep">
-                <p style="color:red">someone had applied for this job, Is it still available?</p>
+                <p style="color:red">{{ _('someone had applied for this job, Is it still available?') }}</p>
                 <div class="">
-                  <button type="button" class="btn btn-danger" name="button" onclick="keep('{{ sad.id }}')">yes</button>
-                  <button type="button" class="btn btn-danger" name="button" onclick="delete_post('{{ sad.id }}')">No</button>
+                  <button type="button" class="btn btn-danger" name="button" onclick="keep('{{ sad.id }}')">{{ _('yes') }}</button>
+                  <button type="button" class="btn btn-danger" name="button" onclick="delete_post('{{ sad.id }}')">{{ _('No') }}</button>
                 </div>
               </div>
             {% endif %}

@@ -3,32 +3,33 @@
 <form method="post">
   {{ form.hidden_tag() }}
   <div class="form-group">
-    {{ form.title.label }}
+    {{ form.title.label|re }}
     {{ form.title(class='form-control') }}
   </div>
   <div class="form-group">
-    {{ form.text.label }}
+    {{ form.text.label|re }}
     {{ form.text(class='form-control')}}
   </div>
   <div class="form-group">
-    {{ form.phone_for_contact.label }}
+    {{ form.phone_for_contact.label|re }}
     {{ form.phone_for_contact(class='form-control') }}
   </div>
   <div class="form-group">
-    {{ form.street.label }}
+    {{ form.street.label|re }}
     {{ form.street(class='form-control' ) }}
   </div>
   <div class="form-group">
-    {{ form.City.label }}
+    {{ form.City.label|re }}
     {{ form.city(class='form-control') }}
   </div>
 <div class="form-control">
-  {{ form.province.label }}
+  {{ form.province.label|re }}
   {{ form.province(class='form-control') }}
   </div>
   <div class="form-group">
-    {{ form.country.label }}
+    {{ form.country.label|re }}
     {{ form.country(class='form-control')}}
+    {{ form.submit(class='btn btn-primary') }}
   </div>
 </form>
 {% endblock %}

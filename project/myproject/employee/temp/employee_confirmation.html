@@ -7,7 +7,7 @@
   <body>
     <div class='container'>
         <div class="jumbotron">
-          <h2>your confirmation code:</h2>
+          <h2>{{_('your confirmation code')}}:</h2>
           <p>click the <a href="http://127.0.0.1:5000{{ url_for('employee.confirmation')}}?employee_code={{ session['employee_code'] }}">link</a> below to verify your account</p>
         </div>
       </div>

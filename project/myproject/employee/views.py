@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, abort, redirect, session, request, url_for, flash
+from flask_babel import gettext, lazy_gettext
 from flask_login import login_required, current_user
 from flask_mail import Message
 
-from geopy.geocoders import Nominatim
+# from geopy.geocoders import Nominatim
 from myproject import mail, db
 from myproject import random_code
 from myproject.employee.forms import UpdateForm, RegistrationForm
@@ -10,6 +11,8 @@ from myproject.models import Users, Jobs
 
 from myproject import check_cat, detect
 from myproject.media.handle_media import handle
+
+from myproject.employer.view import check_gender
 
 employee = Blueprint('employee', __name__, template_folder='temp', url_prefix='/employee')
 
@@ -53,18 +56,18 @@ def main():
 #     jobs = Jobs.query.search(location.address)
 #     return render_template('nearby_jobs.html',jobs=jobs)
 # =======
-@employee.route('/nearby_jobs')
-@login_required
-@check_cat
-def nearby_jobs():
-    coords = request.args.get('coords')
-    lat = coords.split(' ')[0]
-    long = coords.split(' ')[1]
-    geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
-                                      'like Gecko) Chrome/75.0.3770.100 Safari/537.36')
-    location = geolocator.reverse(lat, long)
-    jobs = Jobs.query.search(location.address)
-    return render_template('nearby_jobs.html', jobs=jobs)
+# @employee.route('/nearby_jobs')
+# @login_required
+# @check_cat
+# def nearby_jobs():
+#     coords = request.args.get('coords')
+#     lat = coords.split(' ')[0]
+#     long = coords.split(' ')[1]
+#     geolocator = Nominatim(user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
+#                                       'like Gecko) Chrome/75.0.3770.100 Safari/537.36')
+#     location = geolocator.reverse(lat, long)
+#     jobs = Jobs.query.search(location.address)
+#     return render_template('nearby_jobs.html', jobs=jobs)
 
 
 # >>>>>>> 7c31a97da4897940b87ce32f61f583dbbe4b7ee9
@@ -73,8 +76,7 @@ def nearby_jobs():
 @employee.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        if current_user.employer:
-            return redirect(detect(current_user, 'main'))
+        return redirect(detect(current_user, 'main'))
 
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -88,13 +90,17 @@ def register():
         session['employee_address_country'] = form.country.data
         session['employee_gender'] = form.gender.data
         session['employee_code'] = random_code()
+        print(session['employee_code'])
         message = Message("confirmation code", sender='jouefgamal46@gmail.com',
                           recipients=[form.email.data])  # --------       change it to the domain account
-        message.body = f'your confirmation code: {session["employee_code"]} '
+        message.body = f'your confirmation code: {session["employee_code"]}'
         message.html = render_template('employee_confirmation.html')
-        mail.send(message)
         session['employee_confirm'] = True
-        flash('check your email to verify your account')
+        try:
+            mail.send(message)
+        except:
+            return abort(404)
+        flash(gettext('check your email to verify your account'))
     print(form.errors)
     return render_template('employee_register.html', form=form)
 
@@ -113,21 +119,23 @@ def confirmation():
                          address_city=session['employee_address_city'],
                          address_province=session['employee_address_province'],
                          phone_number=session['employee_phone_number'],
-                         address_country=session['employee_address_country'], male=session['employee_gender'],
+                         address_country=session['employee_address_country'],
+                         male=check_gender(session['employee_gender']),
                          type_of_account=False)
-            try:
-                db.session.add(user)
-                db.session.commit()
-                flash('account has been verified')
-                return render_template('employee_successful_added.html')
-            except Exception as e:
-                db.session.rollback()
-                return render_template('somethong_Went_wrong', e=e)
+            # try:
+            db.session.add(user)
+            db.session.commit()
+            flash(lazy_gettext('account has been verified'))
+            return render_template('employee_successful_added.html')
+            # except Exception as e:
+            #     db.session.rollback()
+            #     return render_template('somethong_Went_wrong', e=e)
         else:
             print('sad')
             return abort(404)
     else:
-        return redirect(url_for('employee.register'))
+        # return redirect(url_for('employee.register'))
+        return abort(404)
 
 
 @employee.route('/update', methods=['post', 'get'])
@@ -171,7 +179,10 @@ def search():
 @check_cat
 def apply():
     jb = request.args.get('job_id')
-    job = Job.query.get(jb)
+    try:
+        job = Jobs.query.get(int(jb))
+    except:
+        return abort(404)
     if not job:
         return abort(404)
     job.applied_for_this_job += 1
@@ -179,6 +190,7 @@ def apply():
         db.session.commit()
     except Exception as e:
         db.session.rollback()
+        return abort(404, e)
     return render_template('apply.html', job=job)
 
 

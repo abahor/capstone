@@ -1,0 +1,204 @@
+# Translations template for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-12-24 18:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: employee/views.py:103 employer/view.py:49
+msgid "check your email to verify your account"
+msgstr ""
+
+#: employee/temp/employee_account.html:7 employee/temp/employee_account.html:9
+#: employer/temp/employer_account.html:7 employer/temp/employer_account.html:9
+msgid "gender"
+msgstr ""
+
+#: employee/temp/employee_account.html:7 employer/temp/employer_account.html:7
+msgid "male"
+msgstr ""
+
+#: employee/temp/employee_account.html:9 employer/temp/employer_account.html:9
+msgid "female"
+msgstr ""
+
+#: employee/temp/employee_account.html:15
+#: employer/temp/employer_account.html:15
+msgid "street"
+msgstr ""
+
+#: employee/temp/employee_account.html:16
+#: employer/temp/employer_account.html:16
+msgid "city"
+msgstr ""
+
+#: employee/temp/employee_account.html:17
+#: employer/temp/employer_account.html:17
+msgid "province"
+msgstr ""
+
+#: employee/temp/employee_account.html:18
+#: employer/temp/employer_account.html:18
+msgid "country"
+msgstr ""
+
+#: employee/temp/employee_account.html:21
+#: employee/temp/employee_account.html:23
+#: employer/temp/employer_account.html:21
+#: employer/temp/employer_account.html:23
+msgid "update"
+msgstr ""
+
+#: employee/temp/employee_confirmation.html:10
+msgid "your confirmation code"
+msgstr ""
+
+#: employee/temp/employee_main.html:16
+msgid "Egypt"
+msgstr ""
+
+#: employee/temp/employee_main.html:17
+msgid "Jordan"
+msgstr ""
+
+#: employee/temp/employee_main.html:18
+msgid "Saudi"
+msgstr ""
+
+#: employee/temp/employee_update.html:34 employee/temp/update.html:26
+#: employer/temp/employer_update.html:35
+msgid "change password"
+msgstr ""
+
+#: employee/temp/search.html:5
+msgid "no results where found"
+msgstr ""
+
+#: employee/temp/search.html:12
+msgid "apply for this job"
+msgstr ""
+
+#: employer/view.py:160
+msgid "job created successfully"
+msgstr ""
+
+#: employer/temp/employer_main.html:5 main/temp/main.html:45
+msgid "post a job"
+msgstr ""
+
+#: employer/temp/employer_main.html:6
+msgid "Jobs that you have posted"
+msgstr ""
+
+#: employer/temp/employer_main.html:26
+msgid "someone had applied for this job, Is it still available?"
+msgstr ""
+
+#: employer/temp/employer_main.html:28
+msgid "yes"
+msgstr ""
+
+#: employer/temp/employer_main.html:29
+msgid "No"
+msgstr ""
+
+#: employer/temp/employer_successful_added.html:4
+msgid "Account created successfully"
+msgstr ""
+
+#: main/main.py:22
+msgid "Email"
+msgstr ""
+
+#: main/main.py:31
+msgid "email doesn't exist try"
+msgstr ""
+
+#: main/main.py:31 main/main.py:62
+msgid "register"
+msgstr ""
+
+#: main/main.py:32
+msgid "instead"
+msgstr ""
+
+#: main/main.py:42
+msgid "email doesn't exists or password is wrong"
+msgstr ""
+
+#: main/main.py:62
+msgid "email doesn't exist try to"
+msgstr ""
+
+#: main/main.py:106
+msgid "successfully changed your password"
+msgstr ""
+
+#: main/temp/about.html:3
+msgid "we are a company"
+msgstr ""
+
+#: main/temp/log.html:29
+msgid "enter your email"
+msgstr ""
+
+#: main/temp/log.html:33
+msgid "password"
+msgstr ""
+
+#: main/temp/log.html:36
+msgid "forget password"
+msgstr ""
+
+#: main/temp/main.html:19
+msgid "Home"
+msgstr ""
+
+#: main/temp/main.html:20
+msgid "about us"
+msgstr ""
+
+#: main/temp/main.html:28
+msgid "Logout"
+msgstr ""
+
+#: main/temp/main.html:30
+msgid "Login"
+msgstr ""
+
+#: main/temp/main.html:43
+msgid "the best way to find jobs instantly"
+msgstr ""
+
+#: main/temp/main.html:44
+msgid "i am searching for a job"
+msgstr ""
+
+#: main/temp/recover.html:7
+msgid "your email"
+msgstr ""
+
+#: main/temp/reset_email.html:10
+msgid "click on this link to change your password"
+msgstr ""
+
+#: main/temp/reset_email.html:10
+msgid "reset"
+msgstr ""
+
+#: main/temp/show_details.html:7
+msgid "provided by"
+msgstr ""
+

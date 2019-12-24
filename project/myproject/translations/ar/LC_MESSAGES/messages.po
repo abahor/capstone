@@ -1,0 +1,311 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-12-24 18:02+0200\n"
+"PO-Revision-Date: 2019-12-19 20:02+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: employee/views.py:103 employer/view.py:49
+msgid "check your email to verify your account"
+msgstr "تحقق من بريدك الالكتروني لاثبات حسابك"
+
+#: employee/temp/employee_account.html:7 employee/temp/employee_account.html:9
+#: employer/temp/employer_account.html:7 employer/temp/employer_account.html:9
+msgid "gender"
+msgstr "النوع"
+
+#: employee/temp/employee_account.html:7 employer/temp/employer_account.html:7
+msgid "male"
+msgstr "ذكر"
+
+#: employee/temp/employee_account.html:9 employer/temp/employer_account.html:9
+msgid "female"
+msgstr "أنثي"
+
+#: employee/temp/employee_account.html:15
+#: employer/temp/employer_account.html:15
+msgid "street"
+msgstr "الشارع"
+
+#: employee/temp/employee_account.html:16
+#: employer/temp/employer_account.html:16
+msgid "city"
+msgstr "المدينة"
+
+#: employee/temp/employee_account.html:17
+#: employer/temp/employer_account.html:17
+msgid "province"
+msgstr "المحافظة"
+
+#: employee/temp/employee_account.html:18
+#: employer/temp/employer_account.html:18
+msgid "country"
+msgstr "الدولة"
+
+#: employee/temp/employee_account.html:21
+#: employee/temp/employee_account.html:23
+#: employer/temp/employer_account.html:21
+#: employer/temp/employer_account.html:23
+msgid "update"
+msgstr "تحديث"
+
+#: employee/temp/employee_confirmation.html:10
+msgid "your confirmation code"
+msgstr "رمز التأكيد"
+
+#: employee/temp/employee_main.html:16
+msgid "Egypt"
+msgstr "مصر"
+
+#: employee/temp/employee_main.html:17
+msgid "Jordan"
+msgstr "الأردن"
+
+#: employee/temp/employee_main.html:18
+msgid "Saudi"
+msgstr "السعودية"
+
+#: employee/temp/employee_update.html:34 employee/temp/update.html:26
+#: employer/temp/employer_update.html:35
+msgid "change password"
+msgstr "تغيير كلمة المرور"
+
+#: employee/temp/search.html:5
+msgid "no results where found"
+msgstr "تعذر الوصول لنتائج"
+
+#: employee/temp/search.html:12
+msgid "apply for this job"
+msgstr "التقدم لهذه الوظيفة"
+
+#: employer/view.py:160
+msgid "job created successfully"
+msgstr "تم انشاء الوظيفة بنجاح"
+
+#: employer/temp/employer_main.html:5 main/temp/main.html:45
+msgid "post a job"
+msgstr "نشر وظيفة"
+
+#: employer/temp/employer_main.html:6
+msgid "Jobs that you have posted"
+msgstr "الوظائف اللتي قمت بنشرها"
+
+#: employer/temp/employer_main.html:26
+msgid "someone had applied for this job, Is it still available?"
+msgstr "قام احدهم بالتقدم لهذه الوظيفه. هل مازالت متاحه؟"
+
+#: employer/temp/employer_main.html:28
+msgid "yes"
+msgstr "نعم"
+
+#: employer/temp/employer_main.html:29
+msgid "No"
+msgstr "لا"
+
+#: employer/temp/employer_successful_added.html:4
+msgid "Account created successfully"
+msgstr "تم انشاء الحساب بنجاح"
+
+#: main/main.py:22
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: main/main.py:31
+msgid "email doesn't exist try"
+msgstr "البريد الاكتروني غير موجود حاول"
+
+#: main/main.py:31 main/main.py:62
+msgid "register"
+msgstr "التسجيل"
+
+#: main/main.py:32
+msgid "instead"
+msgstr "بدلا من ذلك"
+
+#: main/main.py:42
+msgid "email doesn't exists or password is wrong"
+msgstr "البريد الالكتروني غير موجود او كلمة المرور خاطئة"
+
+#: main/main.py:62
+msgid "email doesn't exist try to"
+msgstr "البريد الالكتروني غير موجود حاول "
+
+#: main/main.py:106
+msgid "successfully changed your password"
+msgstr "تم تغيير كلمة المرور بنجاح"
+
+#: main/temp/about.html:3
+msgid "we are a company"
+msgstr "نحن شركه"
+
+#: main/temp/log.html:29
+msgid "enter your email"
+msgstr "ادخل بريدك الالكتروني"
+
+#: main/temp/log.html:33
+msgid "password"
+msgstr "كلمة المرور"
+
+#: main/temp/log.html:36
+msgid "forget password"
+msgstr "نسيت كلمة المرور"
+
+#: main/temp/main.html:19
+msgid "Home"
+msgstr "الرئيسية"
+
+#: main/temp/main.html:20
+msgid "about us"
+msgstr "من نحن"
+
+#: main/temp/main.html:28
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: main/temp/main.html:30
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: main/temp/main.html:43
+msgid "the best way to find jobs instantly"
+msgstr "افضل الطرق للحصول علي وظيفة"
+
+#: main/temp/main.html:44
+msgid "i am searching for a job"
+msgstr "انا ابحث عن وظيفة"
+
+#: main/temp/recover.html:7
+msgid "your email"
+msgstr "البريد الالكتروني"
+
+#: main/temp/reset_email.html:10
+msgid "click on this link to change your password"
+msgstr "اضغط علي الرابط لتغيير كلمه المرور"
+
+#: main/temp/reset_email.html:10
+msgid "reset"
+msgstr "اعاده تعيين"
+
+#: main/temp/show_details.html:7
+msgid "provided by"
+msgstr "نشر بواسطة"
+
+#~ msgid "Asyut Governorate"
+#~ msgstr "أسيوط"
+
+#~ msgid "username"
+#~ msgstr "اسم المستخدم"
+
+#~ msgid "Password"
+#~ msgstr "كلمة السر"
+
+#~ msgid "your password is too short"
+#~ msgstr "كلمة السر قصيرة للغاية"
+
+#~ msgid "Confirm password"
+#~ msgstr "تأكيد كلمة السر"
+
+#~ msgid "Password must match"
+#~ msgstr "يجب تطابق كلمة المرور"
+
+#~ msgid "Retype password"
+#~ msgstr "أعد كتابة كلمة السر"
+
+#~ msgid "your phone number"
+#~ msgstr "رقم الهاتف"
+
+#~ msgid "your gender"
+#~ msgstr "النوع"
+
+#~ msgid "City"
+#~ msgstr "المدينة"
+
+#~ msgid "State"
+#~ msgstr "المحافظة"
+
+#~ msgid "Country"
+#~ msgstr "الدولة"
+
+#~ msgid "Register"
+#~ msgstr "تسجيل"
+
+#~ msgid "Username"
+#~ msgstr "اسم المستخدم"
+
+#~ msgid "Update Profile Picture"
+#~ msgstr "اضافة صورة شخصية"
+
+#~ msgid "phone number"
+#~ msgstr "رقم الهاتف"
+
+#~ msgid "address line"
+#~ msgstr "العنوان"
+
+#~ msgid "Street"
+#~ msgstr "الشارع"
+
+#~ msgid "Update"
+#~ msgstr "تحديث"
+
+#~ msgid "account has been verified"
+#~ msgstr "تم تاكيد الحساب"
+
+#~ msgid "Passwords must match"
+#~ msgstr "يجب تطابق كلمة المرور"
+
+#~ msgid "Confirm Password"
+#~ msgstr "تاكيد كلمة المرور"
+
+#~ msgid "confirm password"
+#~ msgstr "تأكيد كلمة المرور"
+
+#~ msgid "Title"
+#~ msgstr "اسم الوظيفة"
+
+#~ msgid "description for the Job"
+#~ msgstr "وصف الوظيفة"
+
+#~ msgid "write job description"
+#~ msgstr "اكتب وصف الوظيفة"
+
+#~ msgid "Phone for contact"
+#~ msgstr "رقم هاتف للتواصل"
+
+#~ msgid "Phone to be contacted on"
+#~ msgstr "رقم هاتف للتواصل معك"
+
+#~ msgid "address"
+#~ msgstr "العنوان"
+
+#~ msgid "Post"
+#~ msgstr "نشر"
+
+#~ msgid "your password is too short try again"
+#~ msgstr "كلمة المرور قصيرة للغاية حاول مجددا"
+
+#~ msgid "Send reset Email"
+#~ msgstr "اعادة تعيين البريد الالكتروني"
+
+#~ msgid "The new password"
+#~ msgstr "كلمة المرور الجديدة"
+
+#~ msgid "your new password"
+#~ msgstr "ادخل كلمة المرور الجديدة"
+
+#~ msgid "Change"
+#~ msgstr "تغيير"
+

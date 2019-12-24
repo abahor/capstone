@@ -1,8 +1,10 @@
 from myproject import db, login, wa
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
-from flask_login import UserMixin
-
+from flask import abort
+from flask_login import UserMixin, current_user
+from flask_admin.contrib.sqla import ModelView
+from flask_admin import Admin, AdminIndexView
 from myproject import app
 
 
@@ -21,7 +23,7 @@ class Users(db.Model, UserMixin):
     employer = db.Column(db.Boolean, nullable=False)
     male = db.Column(db.Boolean, nullable=False)
     phone_number = db.Column(db.String(20), nullable=False)
-    address_street = db.Column(db.String(20), nullable=False)
+    address_street = db.Column(db.Text, nullable=False)
     address_city = db.Column(db.String(15), nullable=False)
     address_province = db.Column(db.String(20), nullable=False)
     address_country = db.Column(db.String(15), nullable=False)
@@ -85,3 +87,30 @@ class Jobs(db.Model):
 
 
 wa.search_index(app=app, model=Jobs)
+
+
+# accessible
+class MyUsers(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return ''
+
+
+# accessible
+class My_Admin_View(AdminIndexView):
+    def is_accessible(self):
+        if current_user.is_authenticated:
+            if current_user.email == 'abahormelad@gmail.com':
+                return current_user.is_authenticated
+        return abort(404)
+
+    def inaccessible_callback(self, name, **kwargs):
+        return abort(404)
+
+# ------------- Admin
+admin = Admin(app, index_view=My_Admin_View())
+
+admin.add_view(MyUsers(Users, db.session))
+admin.add_view(MyUsers(Jobs, db.session))

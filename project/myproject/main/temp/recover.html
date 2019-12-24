@@ -4,7 +4,7 @@
     {{ form.hidden_tag() }}
     <div class="form-group">
         {{ form.password.label }}
-        {{ form.password(class='form-control') }}
+        {{ form.password(class='form-control',placeholder=gettext('your email')) }}
     </div>
     {{ form.submit(class='btn btn-primary') }}
 </form>

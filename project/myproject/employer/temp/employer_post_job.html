@@ -2,10 +2,14 @@
 {% block jumbotron %}
 {% with messages = get_flashed_messages() %}
   {% if messages %}
+{% for message in messages %}
     <div class="alert alert-danger" role="alert">
-    {% for message in messages %}
       {{ message }}
-    {% endfor %}
+    </div>
+{% endfor %}
+{% elif form.errors %}
+    <div class="alert alert-secondary" role="alert">
+      {{ form.errors }}
     </div>
   {% endif %}
 {% endwith %}
@@ -18,7 +22,7 @@
 </div>
 <div class="form-group">
     {{ form.text.label }}
-    {{ form.text }}
+    {{ form.text(class='form-control') }}
 </div>
 <div class="form-group">
     {{ form.phone_for_contact.label }}

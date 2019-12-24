@@ -3,21 +3,45 @@ from functools import wraps
 from random import choice, randint
 
 from flask import Flask, url_for, request, abort
+from flask_babel import Babel
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_login import LoginManager, current_user
 from flask_mail import Mail
+# from flask_admin import Admin
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
+# from flask_admin.contrib.sqla import ModelView
 # from flask_googlemaps import GoogleMaps
 import flask_whooshalchemy as wa
+
+# from myproject.models import Users, Jobs
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'My_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://codeXz:hpprobook450g3*@127.0.0.1/capstone'
+app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['WTF_I18N_ENABLED'] = True
+# admin = Admin(app)
+
 # app.config['GOOGLEMAPS_KEY'] = 'AIzaSyDhCWI6M6yqMrDHBLxxTqKgfzZ-iTjaV9o'
+
+
+# -------- Babel
+babel = Babel(app, default_locale='en')
+
+
+@babel.localeselector
+def get_locale():
+    if str(request.url_rule).split('/')[1] == 'admin':
+        return None
+    # print(request.accept_languages.best_match(['ar', 'en']))
+    # return 'ar'
+    return request.accept_languages.best_match(['ar', 'en'])
+
+
 # --------------- BUILD
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -32,14 +56,17 @@ limiter = Limiter(
 # ----- GoogleMaps
 # GoogleMaps(app)
 
+# admin.add_view(ModelView(Users,db.session))
+# admin.add_view(ModelView(Jobs,db.session))
+
 # ----- Mail ----
 app.config.update(
     debug=True,
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='jousefgamal46@gmail.com',
-    MAIL_PASSWORD='jousefgamal123456789'
+    MAIL_USERNAME='mohsnegamal100@gmail.com',
+    MAIL_PASSWORD='mohsen123456789'
 )
 mail = Mail(app)
 
@@ -51,6 +78,8 @@ login.refresh_view = 'mained.change'
 login.needs_refresh_message = (
     u"To protect your account, please reauthenticate to access this page."
 )
+
+
 # login.session_protection = "strong"
 
 
@@ -78,17 +107,37 @@ def check_cat(f):
     @wraps(f)
     def wra(*args, **kwargs):
         p = str(request.url_rule).split('/')
-        if current_user.employer == True and p[1] == 'employer':
+        if current_user.employer and p[1] == 'employer':
             return f(*args, **kwargs)
         elif not current_user.employer and p[1] == 'employee':
             return f(*args, **kwargs)
         else:
             return abort(404)
+
     return wra
 
 
+# @app.template_filter('re')
+# def translate(value):
+#     # value.text = gettext(value.text)
+#     return value
+#
+#
+# @app.template_filter('control')
+# def control(value):
+#     # print(value.name)
+#     # u = value.split(' ')
+#     # d = u[4]
+#     # s = d.split('"')
+#     # print(gettext(s[1]))
+#     # print(value)
+#
+#     # value.placeholder = gettext(value.placeholder)
+#     # return " ".join(u)
+#     return value
 
 # ----- importing Blueprints
+# noinspection PyUnresolvedReferences
 from myproject.employee.views import employee
 from myproject.employer.view import employer
 from myproject.main.main import mained
@@ -97,3 +146,7 @@ from myproject.main.main import mained
 app.register_blueprint(employee)
 app.register_blueprint(employer)
 app.register_blueprint(mained)
+
+# from myproject.models import Users, Jobs
+# ---- Admin
+# admin = Admin(app)

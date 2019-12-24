@@ -31,7 +31,7 @@
     {{ form.country.label }}
     {{ form.country(class='form-control') }}
   </div>
-  <a href="{{ url_for('mained.change') }}"><button type="button" class="btn btn-primary" name="button">change password</button></a>
+  <a href="{{ url_for('mained.change') }}"><button type="button" class="btn btn-primary" name="button">{{_('change password')}}</button></a>
 
   {{ form.submit(class='btn btn-primary') }}
   {{ form.picture(id='hide',class='d-none') }}
