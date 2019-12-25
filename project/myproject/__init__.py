@@ -3,7 +3,7 @@ from functools import wraps
 from random import choice, randint
 
 from flask import Flask, url_for, request, abort
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_login import LoginManager, current_user
@@ -35,7 +35,10 @@ babel = Babel(app, default_locale='en')
 
 @babel.localeselector
 def get_locale():
-    if str(request.url_rule).split('/')[1] == 'admin':
+    try:
+        if str(request.url_rule).split('/')[1] == 'admin':
+            return None
+    except:
         return None
     # print(request.accept_languages.best_match(['ar', 'en']))
     # return 'ar'
@@ -65,8 +68,8 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='mohsnegamal100@gmail.com',
-    MAIL_PASSWORD='mohsen123456789'
+    MAIL_USERNAME='khalidgamal3030@gmail.com',
+    MAIL_PASSWORD='khalid123456789'
 )
 mail = Mail(app)
 
@@ -117,24 +120,19 @@ def check_cat(f):
     return wra
 
 
-# @app.template_filter('re')
-# def translate(value):
-#     # value.text = gettext(value.text)
-#     return value
+@app.template_filter('province_translate')
+def translate(value):
+    return gettext(value)
+
 #
-#
-# @app.template_filter('control')
-# def control(value):
-#     # print(value.name)
-#     # u = value.split(' ')
-#     # d = u[4]
-#     # s = d.split('"')
-#     # print(gettext(s[1]))
-#     # print(value)
-#
-#     # value.placeholder = gettext(value.placeholder)
-#     # return " ".join(u)
-#     return value
+@app.template_filter('country_translate')
+def control(value):
+    if value == 'Jo':
+        return gettext('Jordan')
+    elif value == 'Sa':
+        return gettext('Saudi')
+    else:
+        return gettext('Egypt')
 
 # ----- importing Blueprints
 # noinspection PyUnresolvedReferences

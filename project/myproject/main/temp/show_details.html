@@ -3,12 +3,14 @@
 <h3>{{ job.title }}</h3>
 <p>{{ job.text }}</p>
 <img src="/static/media/{{ job.author.profile_pic }}" alt="">
-<p> {{ job.phone_for_contact }}</p>
+<div>
+  <p style="font-size: 21px;"> {{ job.phone_for_contact }}</p>
+</div>
 <p>{{_('provided by')}} {{ job.author.username }}</p>
 
 <!--<div class="jumbotron">-->
   <h6>{{ job.address_of_job }}</h6>
-  <h6>{{ job.address_province }}</h6>
-  <h6>{{ job.address_country }}</h6>
+  <h6>{{ _(job.address_province) }}</h6>
+  <h6>{{ _(job.address_country) }}</h6>
 <!--</div>-->
 {% endblock %}

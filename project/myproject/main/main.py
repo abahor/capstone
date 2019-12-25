@@ -3,7 +3,7 @@ import json
 
 from flask import Blueprint, render_template, flash, session, Markup, request, redirect, abort, jsonify, url_for, \
     current_app
-from flask_babel import gettext, lazy_gettext
+from flask_babel import gettext, gettext, lazy_gettext
 from flask_login import current_user, login_user, login_required, logout_user
 from flask_mail import Message
 from werkzeug.security import generate_password_hash
@@ -108,6 +108,13 @@ def change():
     return render_template('change.html', form=form)
 
 
+def country_translator(d):
+    u = []
+    for i in d:
+        i['translate'] = lazy_gettext(i['translate'])
+        u.append(i)
+    return u
+
 @mained.route('/get_province_for_country')
 def get_province_for_country():
     t = request.args.get('country')
@@ -119,65 +126,74 @@ def get_province_for_country():
             return abort(404)
     # content = open(current_app.root_path + f'/json/{t}.json')
     # data = json.load(content)
-    data = ''
-    egypt = {"states": [
-        lazy_gettext("Alexandria Governorate"),
-        lazy_gettext("Aswan Governorate"),
-        lazy_gettext("Asyut Governorate"),
-        lazy_gettext("Beheira Governorate"),
-        lazy_gettext("Beni Suef Governorate"),
-        lazy_gettext("Cairo Governorate"),
-        lazy_gettext("Dakahlia Governorate"),
-        lazy_gettext("Damietta Governorate"),
-        lazy_gettext("Faiyum Governorate"),
-        lazy_gettext("Gharbia Governorate"),
-        lazy_gettext("Giza Governorate"),
-        lazy_gettext("Ismailia Governorate"),
-        lazy_gettext("Kafr el-Sheikh Governorate"),
-        lazy_gettext("Luxor Governorate"),
-        lazy_gettext("Matrouh Governorate"),
-        lazy_gettext("Minya Governorate"),
-        lazy_gettext("Monufia Governorate"),
-        lazy_gettext("New Valley Governorate"),
-        lazy_gettext("North Sinai Governorate"),
-        lazy_gettext("Port Said Governorate"),
-        lazy_gettext("Qalyubia Governorate"),
-        lazy_gettext("Qena Governorate"),
-        lazy_gettext("Red Sea Governorate"),
-        lazy_gettext("Sohag Governorate"),
-        lazy_gettext("South Sinai Governorate"),
-        lazy_gettext("Suez Governorate")
-    ]}
-    jordan = {
-        "states":
-            [
-                lazy_gettext("Ajlun"),
-                lazy_gettext("Al 'Aqabah"),
-                lazy_gettext("Al Balqa'"),
-                lazy_gettext("Al Karak"),
-                lazy_gettext("Al Mafraq"),
-                lazy_gettext("'Amman"),
-                lazy_gettext("At Tafilah"),
-                lazy_gettext("Az Zarqa'"),
-                lazy_gettext("Irbid"),
-                lazy_gettext("Jarash"),
-                lazy_gettext("Ma'an"),
-                lazy_gettext("Madaba")
-            ]
-    }
-    saudi = {
-        "states": [lazy_gettext("Al Bahah"), lazy_gettext("Al Hudud ash Shamaliyah"), lazy_gettext("Al Jawf"),
-                   lazy_gettext("Al Madinah"), lazy_gettext("Al Qasim"), lazy_gettext("Ar Riyad"),
-                   lazy_gettext("Ash Sharqiyah"), lazy_gettext("'Asir"), lazy_gettext("Ha'il"), lazy_gettext("Jizan"),
-                   lazy_gettext("Makkah"), lazy_gettext("Najran"), lazy_gettext("Tabuk")]
-    }
+
+    egypt = [
+        {'state': "Alexandria Governorate", 'translate': "Alexandria Governorate"},
+        {'state': "Aswan Governorate", 'translate': "Aswan Governorate"},
+        {'state': "Asyut Governorate", 'translate': "Asyut Governorate"},
+        {'state': "Beheira Governorate", 'translate': "Beheira Governorate"},
+        {'state': "Beni Suef Governorate", 'translate': "Beni Suef Governorate"},
+        {'state': "Cairo Governorate", 'translate': "Cairo Governorate"},
+        {'state': "Dakahlia Governorate", 'translate': "Dakahlia Governorate"},
+        {'state': "Damietta Governorate", 'translate': "Damietta Governorate"},
+        {'state': "Faiyum Governorate", 'translate': "Faiyum Governorate"},
+        {'state': "Gharbia Governorate", 'translate': "Gharbia Governorate"},
+        {'state': "Giza Governorate", 'translate': "Giza Governorate"},
+        {'state': "Ismailia Governorate", 'translate': "Ismailia Governorate"},
+
+        {'state': "Kafr el-Sheikh Governorate", 'translate': "Kafr el-Sheikh Governorate"},
+        {'state': "Luxor Governorate", 'translate': "Luxor Governorate"},
+        {'state': "Matrouh Governorate", 'translate': "Matrouh Governorate"},
+        {'state': "Minya Governorate", 'translate': "Minya Governorate"},
+        {'state': "Monufia Governorate", 'translate': "Monufia Governorate"},
+
+        {'state': "New Valley Governorate", 'translate': "New Valley Governorate"},
+        {'state': "North Sinai Governorate", 'translate': "North Sinai Governorate"},
+        {'state': "Port Said Governorate", 'translate': "Monufia Governorate"},
+        {'state': "Qalyubia Governorate", 'translate': "Qalyubia Governorate"},
+        {'state': "Qena Governorate", 'translate': "Qena Governorate"},
+        {'state': "Red Sea Governorate", 'translate': "Red Sea Governorate"},
+        {'state': "Sohag Governorate", 'translate': "Sohag Governorate"},
+
+        {'state': "South Sinai Governorate", 'translate': "South Sinai Governorate"},
+        {'state': "Suez Governorate", 'translate': "Suez Governorate"}
+    ]
+    jordan = [
+        {'state': "Ajlun", 'translate': "Ajlun"},
+        {'state': "Al 'Aqabah", 'translate': "Al 'Aqabah"},
+        {'state': "Al Balqa'", 'translate': "Al Balqa'"},
+        {'state': "Al Karak", 'translate': "Al Karak"},
+        {'state': "Al Mafraq", 'translate': "Al Mafraq"},
+        {'state': "'Amman", 'translate': "'Amman"},
+        {'state': "At Tafilah", 'translate': "At Tafilah"},
+        {'state': "Az Zarqa'", 'translate': "Az Zarqa'"},
+        {'state': "Irbid", 'translate': "Irbid"},
+        {'state': "Jarash", 'translate': "Jarash"},
+        {'state': "Ma'an", 'translate': "Ma'an"},
+        {'state': "Madaba", 'translate': "Madaba"}
+    ]
+    saudi = [
+        {'state': "Al Bahah", 'translate': "Al Bahah"},
+        {'state': "Al Hudud ash Shamaliyah", 'translate': "Al Hudud ash Shamaliyah"},
+        {'state': "Al Jawf", 'translate': "Al Jawf"},
+        {'state': "Al Madinah", 'translate': "Al Madinah"},
+        {'state': "Al Qasim", 'translate': "Al Qasim"},
+        {'state': "Ar Riyad", 'translate': "Ar Riyad"},
+        {'state': "Ash Sharqiyah", 'translate': "Ash Sharqiyah"},
+        {'state': "'Asir", 'translate': "'Asir"},
+        {'state': "Ha'il", 'translate': "Ha'il"},
+        {'state': "Jizan", 'translate': "Jizan"},
+        {'state': "Makkah", 'translate': "Makkah"},
+        {'state': "Najran", 'translate': "Najran"},
+        {'state': "Tabuk", 'translate': "Tabuk"}
+    ]
     # print(data)
     if t == 'Eg':
-        data = egypt
+        data = country_translator(egypt)
     elif t == 'Jo':
-        data = jordan
+        data = country_translator(jordan)
     elif t == 'Sa':
-        data = saudi
+        data = country_translator(saudi)
     else:
         return abort(404)
     return jsonify(data)
@@ -255,6 +271,8 @@ def show_details():
 @login_required
 def get_job():
     city = request.args.get('city')
+    print(city)
+    # print(gettext(city, locale='en'))
     jobs = Jobs.query.filter_by(address_province=city).all()
     o = []
     if not jobs:
@@ -263,6 +281,3 @@ def get_job():
         ob = {'title': i.title, 'text': i.text, 'link': '/show_details?job_id=' + str(i.id)}
         o.append(ob)
     return jsonify(o)
-
-
-

@@ -7,7 +7,7 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h2>{{_('click on this link to change your password')}} <a href="http://127.0.0.1:5000{{ url_for('mained.reset') }}?reset_code={{session['reset_code'] }}">{{_('reset')}}</a></h2>
+            <h2>{{_('click on this link to change your password')}} <a href="{{ url_for('mained.reset',_external=True) }}?reset_code={{session['reset_code'] }}">{{_('reset')}}</a></h2>
         </div>
     </div>
 </body>

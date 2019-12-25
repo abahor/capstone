@@ -36,70 +36,62 @@ class RegistrationForm(FlaskForm):
     city = StringField(lazy_gettext('City'), validators=[DataRequired()],
                        render_kw={'placeholder': lazy_gettext('City'), 'class': 'form-control'})
     province = SelectField(lazy_gettext('State'), validators=[DataRequired()],
-                           choices=[('Asyut Governorate', 'Asyut Governorate'),
-                                    ('Aswan Governorate', 'Aswan Governorate'), (
-                                        "Alexandria Governorate",
-                                        "Alexandria Governorate"), (
-                                        'Beheira Governorate',
-                                        'Beheira Governorate'),
-                                    ('Beni Suef Governorate',
-                                     'Beni Suef Governorate'),
-                                    ('Cairo Governorate', 'Cairo Governorate'), (
-                                        'Dakahlia Governorate',
-                                        'Dakahlia Governorate'), (
-                                        'Damietta Governorate',
-                                        'Damietta Governorate'),
-                                    ('Faiyum Governorate', 'Faiyum Governorate'),
+                           choices=[('Asyut Governorate', lazy_gettext('Asyut Governorate')),
+                                    ('Aswan Governorate', lazy_gettext('Aswan Governorate')),
+                                    ("Alexandria Governorate", lazy_gettext("Alexandria Governorate")),
+                                    ('Beheira Governorate', lazy_gettext('Beheira Governorate')),
+                                    ('Beni Suef Governorate', lazy_gettext('Beni Suef Governorate')),
+                                    ('Cairo Governorate', lazy_gettext('Cairo Governorate')),
+                                    ('Dakahlia Governorate', lazy_gettext('Dakahlia Governorate')),
+                                    ('Damietta Governorate', lazy_gettext('Damietta Governorate')),
+                                    ('Faiyum Governorate', lazy_gettext('Faiyum Governorate')),
+                                    ('Gharbia Governorate', lazy_gettext('Gharbia Governorate')),
+                                    ('Giza Governorate', lazy_gettext('Giza Governorate')),
+                                    ('Ismailia Governorate', lazy_gettext('Ismailia Governorate')),
                                     (
-                                        'Gharbia Governorate',
-                                        'Gharbia Governorate'),
-                                    ('Giza Governorate', 'Giza Governorate'), (
-                                        'Ismailia Governorate',
-                                        'Ismailia Governorate'), (
                                         'Kafr el-Sheikh Governorate',
-                                        'Kafr el-Sheikh Governorate'),
-                                    ('Luxor Governorate', 'Luxor Governorate'), (
+                                        lazy_gettext('Kafr el-Sheikh Governorate')),
+                                    ('Luxor Governorate', lazy_gettext('Luxor Governorate')), (
                                         'Matrouh Governorate',
-                                        'Matrouh Governorate'),
-                                    ('Minya Governorate', 'Minya Governorate'), (
+                                        lazy_gettext('Matrouh Governorate')),
+                                    ('Minya Governorate', lazy_gettext('Minya Governorate')), (
                                         'Monufia Governorate',
-                                        'Monufia Governorate'),
+                                        lazy_gettext('Monufia Governorate')),
                                     ('New Valley Governorate',
-                                     'New Valley Governorate'), (
+                                     lazy_gettext('New Valley Governorate')), (
                                         'North Sinai Governorate',
-                                        'North Sinai Governorate'), (
-                                        'Port Said Governorate',
-                                        'Port Said Governorate'), (
-                                        'Qalyubia Governorate',
-                                        'Qalyubia Governorate'),
-                                    ('Qena Governorate', 'Qena Governorate'), (
+                                        lazy_gettext('North Sinai Governorate')),
+                                    ('Port Said Governorate', lazy_gettext('Port Said Governorate')),
+                                    ('Qalyubia Governorate',
+                                     lazy_gettext('Qalyubia Governorate')),
+                                    ('Qena Governorate', lazy_gettext('Qena Governorate')), (
                                         'Red Sea Governorate',
-                                        'Red Sea Governorate'),
-                                    ('Sohag Governorate', 'Sohag Governorate'), (
+                                        lazy_gettext('Red Sea Governorate')),
+                                    ('Sohag Governorate', lazy_gettext('Sohag Governorate')), (
                                         'South Sinai Governorate',
-                                        'South Sinai Governorate'),
-                                    ('Suez Governorate', 'Suez Governorate'), (
+                                        lazy_gettext('South Sinai Governorate')),
+                                    ('Suez Governorate', lazy_gettext('Suez Governorate')), (
                                         'Al Hudud ash Shamaliyah',
-                                        'Al Hudud ash Shamaliyah'),
-                                    ('Al Bahah', 'Al Bahah'),
-                                    ('Al Jawf', 'Al Jawf'),
-                                    ('Al Madinah', 'Al Madinah'),
-                                    ('Al Qasim', 'Al Qasim'),
-                                    ('Ar Riyad', 'Ar Riyad'),
-                                    ('Ash Sharqiyah', 'Ash Sharqiyah'),
-                                    ('Asir', 'Asir'), ('Hail', 'Hail'),
-                                    ('Jizan', 'Jizan'), ('Makkah', 'Makkah'),
-                                    ('Najran', 'Najran'), ('Tabuk', 'Tabuk'),
-                                    ('Ajlun', 'Ajlun'),
-                                    ('Al Aqabah', 'Al Aqabah'),
-                                    ('Al Balqa', 'Al Balqa'),
-                                    ('Al Karak', 'Al Karak'),
-                                    ('Al Mafraq', 'Al Mafraq'),
-                                    ('Amman', 'Amman'),
-                                    ('At Tafilah', 'At Tafilah'),
-                                    ('Az Zarqa', 'Az Zarqa'), ('Irbid', 'Irbid'),
-                                    ('Jarash', 'Jarash'), ('Madaba', 'Madaba'),
-                                    ('Maan', 'Maan')
+                                        lazy_gettext('Al Hudud ash Shamaliyah')),
+                                    ('Al Bahah', lazy_gettext('Al Bahah')),
+                                    ('Al Jawf', lazy_gettext('Al Jawf')),
+                                    ('Al Madinah', lazy_gettext('Al Madinah')),
+                                    ('Al Qasim', lazy_gettext('Al Qasim')),
+                                    ('Ar Riyad', lazy_gettext('Ar Riyad')),
+                                    ('Ash Sharqiyah', lazy_gettext('Ash Sharqiyah')),
+                                    ('Asir', lazy_gettext('Asir')), ('Hail', lazy_gettext('Hail')),
+                                    ('Jizan', lazy_gettext('Jizan')), ('Makkah', lazy_gettext('Makkah')),
+                                    ('Najran', lazy_gettext('Najran')), ('Tabuk', lazy_gettext('Tabuk')),
+                                    ('Ajlun', lazy_gettext('Ajlun')),
+                                    ('Al Aqabah', lazy_gettext('Al Aqabah')),
+                                    ('Al Balqa', lazy_gettext('Al Balqa')),
+                                    ('Al Karak', lazy_gettext('Al Karak')),
+                                    ('Al Mafraq', lazy_gettext('Al Mafraq')),
+                                    ('Amman', lazy_gettext('Amman')),
+                                    ('At Tafilah', lazy_gettext('At Tafilah')),
+                                    ('Az Zarqa', lazy_gettext('Az Zarqa')), ('Irbid', lazy_gettext('Irbid')),
+                                    ('Jarash', lazy_gettext('Jarash')), ('Madaba', lazy_gettext('Madaba')),
+                                    ('Maan', lazy_gettext('Maan'))
 
                                     ])  # ---  ---  kamel hena ya afgany # --- will be verified by the country js ajax
     country = SelectField(lazy_gettext('Country'), validators=[DataRequired()],
@@ -118,72 +110,64 @@ class UpdateForm(FlaskForm):
     city = StringField(lazy_gettext('City'), validators=[DataRequired()],
                        render_kw={'placeholder': lazy_gettext('city'), 'class': 'form-control'})
     province = SelectField(lazy_gettext('province'), validators=[DataRequired()],
-                           choices=[('Asyut Governorate', 'Asyut Governorate'),
-                                    ('Aswan Governorate', 'Aswan Governorate'), (
-                                        "Alexandria Governorate",
-                                        "Alexandria Governorate"), (
-                                        'Beheira Governorate',
-                                        'Beheira Governorate'),
-                                    ('Beni Suef Governorate',
-                                     'Beni Suef Governorate'),
-                                    ('Cairo Governorate', 'Cairo Governorate'), (
-                                        'Dakahlia Governorate',
-                                        'Dakahlia Governorate'), (
-                                        'Damietta Governorate',
-                                        'Damietta Governorate'),
-                                    ('Faiyum Governorate', 'Faiyum Governorate'),
+                           choices=[('Asyut Governorate', lazy_gettext('Asyut Governorate')),
+                                    ('Aswan Governorate', lazy_gettext('Aswan Governorate')),
+                                    ("Alexandria Governorate", lazy_gettext("Alexandria Governorate")),
+                                    ('Beheira Governorate', lazy_gettext('Beheira Governorate')),
+                                    ('Beni Suef Governorate', lazy_gettext('Beni Suef Governorate')),
+                                    ('Cairo Governorate', lazy_gettext('Cairo Governorate')),
+                                    ('Dakahlia Governorate', lazy_gettext('Dakahlia Governorate')),
+                                    ('Damietta Governorate', lazy_gettext('Damietta Governorate')),
+                                    ('Faiyum Governorate', lazy_gettext('Faiyum Governorate')),
+                                    ('Gharbia Governorate', lazy_gettext('Gharbia Governorate')),
+                                    ('Giza Governorate', lazy_gettext('Giza Governorate')),
+                                    ('Ismailia Governorate', lazy_gettext('Ismailia Governorate')),
                                     (
-                                        'Gharbia Governorate',
-                                        'Gharbia Governorate'),
-                                    ('Giza Governorate', 'Giza Governorate'), (
-                                        'Ismailia Governorate',
-                                        'Ismailia Governorate'), (
                                         'Kafr el-Sheikh Governorate',
-                                        'Kafr el-Sheikh Governorate'),
-                                    ('Luxor Governorate', 'Luxor Governorate'), (
+                                        lazy_gettext('Kafr el-Sheikh Governorate')),
+                                    ('Luxor Governorate', lazy_gettext('Luxor Governorate')), (
                                         'Matrouh Governorate',
-                                        'Matrouh Governorate'),
-                                    ('Minya Governorate', 'Minya Governorate'), (
+                                        lazy_gettext('Matrouh Governorate')),
+                                    ('Minya Governorate', lazy_gettext('Minya Governorate')), (
                                         'Monufia Governorate',
-                                        'Monufia Governorate'),
+                                        lazy_gettext('Monufia Governorate')),
                                     ('New Valley Governorate',
-                                     'New Valley Governorate'), (
+                                     lazy_gettext('New Valley Governorate')), (
                                         'North Sinai Governorate',
-                                        'North Sinai Governorate'), (
-                                        'Port Said Governorate',
-                                        'Port Said Governorate'), (
-                                        'Qalyubia Governorate',
-                                        'Qalyubia Governorate'),
-                                    ('Qena Governorate', 'Qena Governorate'), (
+                                        lazy_gettext('North Sinai Governorate')),
+                                    ('Port Said Governorate', lazy_gettext('Port Said Governorate')),
+                                    ('Qalyubia Governorate',
+                                     lazy_gettext('Qalyubia Governorate')),
+                                    ('Qena Governorate', lazy_gettext('Qena Governorate')), (
                                         'Red Sea Governorate',
-                                        'Red Sea Governorate'),
-                                    ('Sohag Governorate', 'Sohag Governorate'), (
+                                        lazy_gettext('Red Sea Governorate')),
+                                    ('Sohag Governorate', lazy_gettext('Sohag Governorate')), (
                                         'South Sinai Governorate',
-                                        'South Sinai Governorate'),
-                                    ('Suez Governorate', 'Suez Governorate'), (
+                                        lazy_gettext('South Sinai Governorate')),
+                                    ('Suez Governorate', lazy_gettext('Suez Governorate')), (
                                         'Al Hudud ash Shamaliyah',
-                                        'Al Hudud ash Shamaliyah'),
-                                    ('Al Bahah', 'Al Bahah'),
-                                    ('Al Jawf', 'Al Jawf'),
-                                    ('Al Madinah', 'Al Madinah'),
-                                    ('Al Qasim', 'Al Qasim'),
-                                    ('Ar Riyad', 'Ar Riyad'),
-                                    ('Ash Sharqiyah', 'Ash Sharqiyah'),
-                                    ('Asir', 'Asir'), ('Hail', 'Hail'),
-                                    ('Jizan', 'Jizan'), ('Makkah', 'Makkah'),
-                                    ('Najran', 'Najran'), ('Tabuk', 'Tabuk'),
-                                    ('Ajlun', 'Ajlun'),
-                                    ('Al Aqabah', 'Al Aqabah'),
-                                    ('Al Balqa', 'Al Balqa'),
-                                    ('Al Karak', 'Al Karak'),
-                                    ('Al Mafraq', 'Al Mafraq'),
-                                    ('Amman', 'Amman'),
-                                    ('At Tafilah', 'At Tafilah'),
-                                    ('Az Zarqa', 'Az Zarqa'), ('Irbid', 'Irbid'),
-                                    ('Jarash', 'Jarash'), ('Madaba', 'Madaba'),
-                                    ('Maan', 'Maan')
+                                        lazy_gettext('Al Hudud ash Shamaliyah')),
+                                    ('Al Bahah', lazy_gettext('Al Bahah')),
+                                    ('Al Jawf', lazy_gettext('Al Jawf')),
+                                    ('Al Madinah', lazy_gettext('Al Madinah')),
+                                    ('Al Qasim', lazy_gettext('Al Qasim')),
+                                    ('Ar Riyad', lazy_gettext('Ar Riyad')),
+                                    ('Ash Sharqiyah', lazy_gettext('Ash Sharqiyah')),
+                                    ('Asir', lazy_gettext('Asir')), ('Hail', lazy_gettext('Hail')),
+                                    ('Jizan', lazy_gettext('Jizan')), ('Makkah', lazy_gettext('Makkah')),
+                                    ('Najran', lazy_gettext('Najran')), ('Tabuk', lazy_gettext('Tabuk')),
+                                    ('Ajlun', lazy_gettext('Ajlun')),
+                                    ('Al Aqabah', lazy_gettext('Al Aqabah')),
+                                    ('Al Balqa', lazy_gettext('Al Balqa')),
+                                    ('Al Karak', lazy_gettext('Al Karak')),
+                                    ('Al Mafraq', lazy_gettext('Al Mafraq')),
+                                    ('Amman', lazy_gettext('Amman')),
+                                    ('At Tafilah', lazy_gettext('At Tafilah')),
+                                    ('Az Zarqa', lazy_gettext('Az Zarqa')), ('Irbid', lazy_gettext('Irbid')),
+                                    ('Jarash', lazy_gettext('Jarash')), ('Madaba', lazy_gettext('Madaba')),
+                                    ('Maan', lazy_gettext('Maan'))
 
-                                    ], _translations=True)
+                                    ])
     country = SelectField(lazy_gettext('country'), validators=[DataRequired()],
                           choices=[('Eg', lazy_gettext('Egypt')), ('Jo', lazy_gettext('Jordan')),
                                    ('Sa', lazy_gettext('Saudi'))], _translations=True)

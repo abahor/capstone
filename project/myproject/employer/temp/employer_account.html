@@ -4,18 +4,18 @@
 <h3>{{ current_user.username }}</h3>
 <h6>{{ current_user.email }}</h6>
 {% if current_user.male %}
-    <h6>{{ _('gender')}} :{{ _('male')}}</h6>
+    <h6>{{ _('gender')}} :{{ _('male') }}</h6>
 {% else %}
-    <p>{{_('gender')}} : {{_('female')}}</p>
+    <p>{{_('gender') }} : {{ _('female') }}</p>
 {% endif %}
 <p>{{ current_user.phone_number }}</p>
 
 <hr>
 <p>
   {{ _('street') }} :  {{ current_user.address_street }} <br>
-  {{_('city')}} : {{ current_user.address_city }}<br>
-  {{_('province')}} : {{ current_user.address_province }}<br>
-  {{_('country')}} : {{ current_user.address_country }}<br>
+  {{_('city') }} : {{ current_user.address_city }}<br>
+  {{_('province') }} : {{ current_user.address_province|province_translate }}<br>
+  {{_('country') }} : {{ current_user.address_country|country_translate }}<br>
 </p>
 {% if current_user.employer %}
   <a href="{{ url_for('employer.update') }}"><button type="button" name="button" class="btn btn-secondary">{{ _('update') }}</button></a>

@@ -5,7 +5,8 @@ country.addEventListener('change',function () {
   var y = new XMLHttpRequest();
   y.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-    myFunction(this);
+    console.log(this.response)
+    my(this.response);
     }
   };
   y.open("GET", "/get_province_for_country?country="+ country.value );
@@ -13,19 +14,20 @@ country.addEventListener('change',function () {
 });
 
 
-function myFunction(list) {
+function my(list) {
   // console.log(list);
   // list = list.response
-  list = JSON.parse(list.response)
+  list = JSON.parse(list)
 //  console.log(typeof list);
 //  console.log(list['states']);
+console.log(list)
   province.options.length = 0
-  for (var variable in list['states']) {
+  for (var variable of list) {
     // if (province.options.length == 0 ) {
     // province.options[province.options.length] = new Option(variable,variable,false,false)
     // } else {
-    console.log(list['states'][variable]);
-      province.options[province.options.length] = new Option(list['states'][variable],list['states'][variable],false,false)
+    console.log(variable['state']);
+      province.options[province.options.length] = new Option(variable['translate'], variable['state'],false,false)
     };
     // province.options[province.options.length + 1] = new Option(variable,variable,false,false)
   }
@@ -55,7 +57,7 @@ function myFunction(list) {
 var scroller = document.getElementById('sad')
 var main = document.getElementById('accordionExample')
 var search_button = document.getElementById('search_button')
-search.addEventListener('click',function () {
+search_button.addEventListener('click',function () {
   var xm = new XMLHttpRequest();
   xm.onreadystatechange = function (){
     if (this.readyState == 4 && this.status == 200) {

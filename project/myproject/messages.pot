@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-12-24 18:02+0200\n"
+"POT-Creation-Date: 2019-12-25 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
+
+#: __init__.py:131 employee/temp/employee_main.html:17
+msgid "Jordan"
+msgstr ""
+
+#: __init__.py:133 employee/temp/employee_main.html:18
+msgid "Saudi"
+msgstr ""
+
+#: __init__.py:135 employee/temp/employee_main.html:16
+msgid "Egypt"
+msgstr ""
 
 #: employee/views.py:103 employer/view.py:49
 msgid "check your email to verify your account"
@@ -62,19 +74,76 @@ msgid "update"
 msgstr ""
 
 #: employee/temp/employee_confirmation.html:10
+#: employer/temp/employer_confirmation.html:10
 msgid "your confirmation code"
 msgstr ""
 
-#: employee/temp/employee_main.html:16
-msgid "Egypt"
+#: employee/temp/employee_main.html:24
+msgid "Asyut Governorate"
 msgstr ""
 
-#: employee/temp/employee_main.html:17
-msgid "Jordan"
+#: employee/temp/employee_main.html:25
+msgid "Aswan Governorate"
 msgstr ""
 
-#: employee/temp/employee_main.html:18
-msgid "Saudi"
+#: employee/temp/employee_main.html:26
+msgid "Alexandria Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:27
+msgid "Beheira Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:28
+msgid "Beni Suef Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:29
+msgid "Cairo Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:30
+msgid "Dakahlia Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:31
+msgid "Damietta Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:32
+msgid "Faiyum Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:33
+msgid "Gharbia Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:34
+msgid "Giza Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:35
+msgid "Ismailia Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:36
+msgid "Kafr el-Sheikh Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:37
+msgid "Luxor Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:38
+msgid "Matrouh Governorate"
+msgstr ""
+
+#: employee/temp/employee_main.html:39
+msgid "Madaba"
+msgstr ""
+
+#: employee/temp/employee_main.html:40
+msgid "Maan"
 msgstr ""
 
 #: employee/temp/employee_update.html:34 employee/temp/update.html:26
@@ -92,6 +161,18 @@ msgstr ""
 
 #: employer/view.py:160
 msgid "job created successfully"
+msgstr ""
+
+#: employer/temp/employer_confirmation.html:11
+msgid "click the"
+msgstr ""
+
+#: employer/temp/employer_confirmation.html:11
+msgid "link"
+msgstr ""
+
+#: employer/temp/employer_confirmation.html:11
+msgid "below to verify your account"
 msgstr ""
 
 #: employer/temp/employer_main.html:5 main/temp/main.html:45
@@ -150,6 +231,42 @@ msgstr ""
 msgid "we are a company"
 msgstr ""
 
+#: main/temp/about.html:6
+msgid "About us"
+msgstr ""
+
+#: main/temp/about.html:7
+msgid ""
+"We are grade 12 students from STEM Assiut school and this is our web-"
+"based application for the capstone project. Our application aims to "
+"contribute to solve one of the most demanding challenges in Egypt - the "
+"unemployment problem – as our application facilitates the connection "
+"between job providers and job seekers and helps the job seekers to locate"
+" information about available jobs faster"
+msgstr ""
+
+#: main/temp/about.html:8
+msgid ""
+"Our app has a simple and friendly user interface to enable people of "
+"various levels of education to use the app easily"
+msgstr ""
+
+#: main/temp/about.html:14
+msgid "Contact us"
+msgstr ""
+
+#: main/temp/about.html:15
+msgid "Ahmed Nasr"
+msgstr ""
+
+#: main/temp/about.html:17
+msgid "Mahmoud Refaey"
+msgstr ""
+
+#: main/temp/about.html:19
+msgid "Abahor Melad"
+msgstr ""
+
 #: main/temp/log.html:29
 msgid "enter your email"
 msgstr ""
@@ -200,5 +317,9 @@ msgstr ""
 
 #: main/temp/show_details.html:7
 msgid "provided by"
+msgstr ""
+
+#: main/temp/something_went_wrong.html:7
+msgid "something went wrong try again later"
 msgstr ""
 

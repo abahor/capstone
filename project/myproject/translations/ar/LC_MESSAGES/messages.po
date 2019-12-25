@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-12-24 18:02+0200\n"
+"POT-Creation-Date: 2019-12-25 12:05+0200\n"
 "PO-Revision-Date: 2019-12-19 20:02+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -18,6 +18,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
+
+#: __init__.py:131 employee/temp/employee_main.html:17
+msgid "Jordan"
+msgstr "الأردن"
+
+#: __init__.py:133 employee/temp/employee_main.html:18
+msgid "Saudi"
+msgstr "السعودية"
+
+#: __init__.py:135 employee/temp/employee_main.html:16
+msgid "Egypt"
+msgstr "مصر"
 
 #: employee/views.py:103 employer/view.py:49
 msgid "check your email to verify your account"
@@ -64,20 +76,77 @@ msgid "update"
 msgstr "تحديث"
 
 #: employee/temp/employee_confirmation.html:10
+#: employer/temp/employer_confirmation.html:10
 msgid "your confirmation code"
 msgstr "رمز التأكيد"
 
-#: employee/temp/employee_main.html:16
-msgid "Egypt"
-msgstr "مصر"
+#: employee/temp/employee_main.html:24
+msgid "Asyut Governorate"
+msgstr "اسيوط"
 
-#: employee/temp/employee_main.html:17
-msgid "Jordan"
-msgstr "الأردن"
+#: employee/temp/employee_main.html:25
+msgid "Aswan Governorate"
+msgstr "اسوان"
 
-#: employee/temp/employee_main.html:18
-msgid "Saudi"
-msgstr "السعودية"
+#: employee/temp/employee_main.html:26
+msgid "Alexandria Governorate"
+msgstr "الاسكندرية"
+
+#: employee/temp/employee_main.html:27
+msgid "Beheira Governorate"
+msgstr "البحيرة"
+
+#: employee/temp/employee_main.html:28
+msgid "Beni Suef Governorate"
+msgstr "بني سويف"
+
+#: employee/temp/employee_main.html:29
+msgid "Cairo Governorate"
+msgstr "القاهرة"
+
+#: employee/temp/employee_main.html:30
+msgid "Dakahlia Governorate"
+msgstr "الدقهلية"
+
+#: employee/temp/employee_main.html:31
+msgid "Damietta Governorate"
+msgstr "دمياط"
+
+#: employee/temp/employee_main.html:32
+msgid "Faiyum Governorate"
+msgstr "الفيوم"
+
+#: employee/temp/employee_main.html:33
+msgid "Gharbia Governorate"
+msgstr "الغربية"
+
+#: employee/temp/employee_main.html:34
+msgid "Giza Governorate"
+msgstr "الجيزة"
+
+#: employee/temp/employee_main.html:35
+msgid "Ismailia Governorate"
+msgstr "الاسماعيلية"
+
+#: employee/temp/employee_main.html:36
+msgid "Kafr el-Sheikh Governorate"
+msgstr "كفر الشيخ"
+
+#: employee/temp/employee_main.html:37
+msgid "Luxor Governorate"
+msgstr "الاقصر"
+
+#: employee/temp/employee_main.html:38
+msgid "Matrouh Governorate"
+msgstr "مطروح"
+
+#: employee/temp/employee_main.html:39
+msgid "Madaba"
+msgstr "مادبا"
+
+#: employee/temp/employee_main.html:40
+msgid "Maan"
+msgstr "مان"
 
 #: employee/temp/employee_update.html:34 employee/temp/update.html:26
 #: employer/temp/employer_update.html:35
@@ -95,6 +164,18 @@ msgstr "التقدم لهذه الوظيفة"
 #: employer/view.py:160
 msgid "job created successfully"
 msgstr "تم انشاء الوظيفة بنجاح"
+
+#: employer/temp/employer_confirmation.html:11
+msgid "click the"
+msgstr "اضغط علي"
+
+#: employer/temp/employer_confirmation.html:11
+msgid "link"
+msgstr "الرابط"
+
+#: employer/temp/employer_confirmation.html:11
+msgid "below to verify your account"
+msgstr "في الاسفل للتاكيد بريدك الالكتروني"
 
 #: employer/temp/employer_main.html:5 main/temp/main.html:45
 msgid "post a job"
@@ -152,6 +233,50 @@ msgstr "تم تغيير كلمة المرور بنجاح"
 msgid "we are a company"
 msgstr "نحن شركه"
 
+#: main/temp/about.html:6
+msgid "About us"
+msgstr "من نحن"
+
+#: main/temp/about.html:7
+msgid ""
+"We are grade 12 students from STEM Assiut school and this is our web-"
+"based application for the capstone project. Our application aims to "
+"contribute to solve one of the most demanding challenges in Egypt - the "
+"unemployment problem – as our application facilitates the connection "
+"between job providers and job seekers and helps the job seekers to locate"
+" information about available jobs faster"
+msgstr ""
+"نحن طلاب في الصف الثالث الثانوي من مدرسة المتفوقين في العلوم و "
+"التكنولوجيا بأسيوط و هذا هو تطبيق الويب الخاص بنا لمشروع الكابستون لهذا "
+"الصف الدراسي. تطبيقنا يهدف للمساهمة في حل واحدة من اصعب التحديات الي "
+"تواجه مصر الا وهي البطالة حيث ان تطبيقنا يسهل عملية التواصل بين الباحثين "
+"عن العمل, و اصحاب الوظائف الشاغرة, ويسرع عملية البحث عن المعلومات حول فرص"
+" العمل."
+
+#: main/temp/about.html:8
+msgid ""
+"Our app has a simple and friendly user interface to enable people of "
+"various levels of education to use the app easily"
+msgstr ""
+"تطبيقنا يعرض واجهة مستخدم بسيطة و عملية لأتاحة أسخدامه من قبل مستخدمين من"
+" مختلف المستويات التعليمية."
+
+#: main/temp/about.html:14
+msgid "Contact us"
+msgstr "تواصل معنا:"
+
+#: main/temp/about.html:15
+msgid "Ahmed Nasr"
+msgstr "احمد نصر"
+
+#: main/temp/about.html:17
+msgid "Mahmoud Refaey"
+msgstr "محمود رفاعي"
+
+#: main/temp/about.html:19
+msgid "Abahor Melad"
+msgstr "اباهور ميلاد"
+
 #: main/temp/log.html:29
 msgid "enter your email"
 msgstr "ادخل بريدك الالكتروني"
@@ -204,108 +329,227 @@ msgstr "اعاده تعيين"
 msgid "provided by"
 msgstr "نشر بواسطة"
 
-#~ msgid "Asyut Governorate"
-#~ msgstr "أسيوط"
+#: main/temp/something_went_wrong.html:7
+msgid "something went wrong try again later"
+msgstr "حدث خطا ما حاول مجددا في وقت لاحق"
 
-#~ msgid "username"
-#~ msgstr "اسم المستخدم"
+msgid "username"
+msgstr "اسم المستخدم"
 
-#~ msgid "Password"
-#~ msgstr "كلمة السر"
+msgid "Password"
+msgstr "كلمة السر"
 
-#~ msgid "your password is too short"
-#~ msgstr "كلمة السر قصيرة للغاية"
+msgid "your password is too short"
+msgstr "كلمة السر قصيرة للغاية"
 
-#~ msgid "Confirm password"
-#~ msgstr "تأكيد كلمة السر"
+msgid "Confirm password"
+msgstr "تأكيد كلمة السر"
 
-#~ msgid "Password must match"
-#~ msgstr "يجب تطابق كلمة المرور"
+msgid "Password must match"
+msgstr "يجب تطابق كلمة المرور"
 
-#~ msgid "Retype password"
-#~ msgstr "أعد كتابة كلمة السر"
+msgid "Retype password"
+msgstr "أعد كتابة كلمة السر"
 
-#~ msgid "your phone number"
-#~ msgstr "رقم الهاتف"
+msgid "your phone number"
+msgstr "رقم الهاتف"
 
-#~ msgid "your gender"
-#~ msgstr "النوع"
+msgid "your gender"
+msgstr "النوع"
 
-#~ msgid "City"
-#~ msgstr "المدينة"
+msgid "City"
+msgstr "المدينة"
 
-#~ msgid "State"
-#~ msgstr "المحافظة"
+msgid "State"
+msgstr "المحافظة"
 
-#~ msgid "Country"
-#~ msgstr "الدولة"
+msgid "Country"
+msgstr "الدولة"
 
-#~ msgid "Register"
-#~ msgstr "تسجيل"
+msgid "Register"
+msgstr "تسجيل"
 
-#~ msgid "Username"
-#~ msgstr "اسم المستخدم"
+msgid "Username"
+msgstr "اسم المستخدم"
 
-#~ msgid "Update Profile Picture"
-#~ msgstr "اضافة صورة شخصية"
+msgid "Update Profile Picture"
+msgstr "اضافة صورة شخصية"
 
-#~ msgid "phone number"
-#~ msgstr "رقم الهاتف"
+msgid "phone number"
+msgstr "رقم الهاتف"
 
-#~ msgid "address line"
-#~ msgstr "العنوان"
+msgid "address line"
+msgstr "العنوان"
 
-#~ msgid "Street"
-#~ msgstr "الشارع"
+msgid "Street"
+msgstr "الشارع"
 
-#~ msgid "Update"
-#~ msgstr "تحديث"
+msgid "Update"
+msgstr "تحديث"
 
-#~ msgid "account has been verified"
-#~ msgstr "تم تاكيد الحساب"
+msgid "account has been verified"
+msgstr "تم تاكيد الحساب"
 
-#~ msgid "Passwords must match"
-#~ msgstr "يجب تطابق كلمة المرور"
+msgid "Passwords must match"
+msgstr "يجب تطابق كلمة المرور"
 
-#~ msgid "Confirm Password"
-#~ msgstr "تاكيد كلمة المرور"
+msgid "Confirm Password"
+msgstr "تاكيد كلمة المرور"
 
-#~ msgid "confirm password"
-#~ msgstr "تأكيد كلمة المرور"
+msgid "confirm password"
+msgstr "تأكيد كلمة المرور"
 
-#~ msgid "Title"
-#~ msgstr "اسم الوظيفة"
+msgid "Title"
+msgstr "اسم الوظيفة"
 
-#~ msgid "description for the Job"
-#~ msgstr "وصف الوظيفة"
+msgid "description for the Job"
+msgstr "وصف الوظيفة"
 
-#~ msgid "write job description"
-#~ msgstr "اكتب وصف الوظيفة"
+msgid "write job description"
+msgstr "اكتب وصف الوظيفة"
 
-#~ msgid "Phone for contact"
-#~ msgstr "رقم هاتف للتواصل"
+msgid "Phone for contact"
+msgstr "رقم هاتف للتواصل"
 
-#~ msgid "Phone to be contacted on"
-#~ msgstr "رقم هاتف للتواصل معك"
+msgid "Phone to be contacted on"
+msgstr "رقم هاتف للتواصل معك"
 
-#~ msgid "address"
-#~ msgstr "العنوان"
+msgid "address"
+msgstr "العنوان"
 
-#~ msgid "Post"
-#~ msgstr "نشر"
+msgid "Post"
+msgstr "نشر"
 
-#~ msgid "your password is too short try again"
-#~ msgstr "كلمة المرور قصيرة للغاية حاول مجددا"
+msgid "your password is too short try again"
+msgstr "كلمة المرور قصيرة للغاية حاول مجددا"
 
-#~ msgid "Send reset Email"
-#~ msgstr "اعادة تعيين البريد الالكتروني"
+msgid "Send reset Email"
+msgstr "اعادة تعيين البريد الالكتروني"
 
-#~ msgid "The new password"
-#~ msgstr "كلمة المرور الجديدة"
+msgid "The new password"
+msgstr "كلمة المرور الجديدة"
 
-#~ msgid "your new password"
-#~ msgstr "ادخل كلمة المرور الجديدة"
+msgid "your new password"
+msgstr "ادخل كلمة المرور الجديدة"
 
-#~ msgid "Change"
-#~ msgstr "تغيير"
+msgid "Change"
+msgstr "تغيير"
+
+msgid "Minya Governorate"
+msgstr "المنيا"
+
+msgid "Monufia Governorate"
+msgstr "المنوفية"
+
+msgid "New Valley Governorate"
+msgstr "الوادي الجديد"
+
+msgid "North Sinai Governorate"
+msgstr "شمال سيناء"
+
+msgid "Port Said Governorate"
+msgstr "بورسعيد"
+
+msgid "Qalyubia Governorate"
+msgstr "القليوبية"
+
+msgid "Qena Governorate"
+msgstr "قنا"
+
+msgid "Red Sea Governorate"
+msgstr "البحر الاحمر"
+
+msgid "Sohag Governorate"
+msgstr "سوهاج"
+
+msgid "South Sinai Governorate"
+msgstr "جنوب سيناء"
+
+msgid "Suez Governorate"
+msgstr "السويس"
+
+msgid "Ajlun"
+msgstr "عجلون"
+
+msgid "Al 'Aqabah"
+msgstr "العقبة"
+
+msgid "Al Balqa'"
+msgstr "البلقاء"
+
+msgid "Al Karak"
+msgstr "الكرك"
+
+msgid "Al Mafraq"
+msgstr "المفرق"
+
+msgid "'Amman"
+msgstr "عمان"
+
+msgid "At Tafilah"
+msgstr "الطفيلة"
+
+msgid "Az Zarqa'"
+msgstr "الزرقاء"
+
+msgid "Irbid"
+msgstr "اربد"
+
+msgid "Jarash"
+msgstr "جرش"
+
+msgid "Ma'an"
+msgstr "معان"
+
+msgid "Al Bahah"
+msgstr "الباحة"
+
+msgid "Al Hudud ash Shamaliyah"
+msgstr "الحدود الشمالية"
+
+msgid "Al Jawf"
+msgstr "الجوف"
+
+msgid "Al Madinah"
+msgstr "المدينة"
+
+msgid "Al Qasim"
+msgstr "القصيم"
+
+msgid "Ar Riyad"
+msgstr "الرياض"
+
+msgid "Ash Sharqiyah"
+msgstr "الشرقية"
+
+msgid "'Asir"
+msgstr "عسير"
+
+msgid "Ha'il"
+msgstr "حائل"
+
+msgid "Jizan"
+msgstr "جازان"
+
+msgid "Makkah"
+msgstr "مكة"
+
+msgid "Najran"
+msgstr "نجران"
+
+msgid "Tabuk"
+msgstr "تبوك"
+
+msgid "search"
+msgstr "بحث"
+
+msgid "Eg"
+msgstr "مصر"
+
+msgid "Jo"
+msgstr "الاردن"
+
+msgid "Sa"
+msgstr "السعوديه"
+
 

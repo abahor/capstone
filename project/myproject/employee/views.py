@@ -110,10 +110,11 @@ def confirmation():
     if current_user.is_authenticated:
         return abort(404)
     confirm = request.args.get('employee_code')
-    if session['employee_confirm']:
-        print(session['employee_code'])
-        if confirm == session['employee_code']:
-            user = Users(email=session['employee_email'], username=session['employee_username'],
+    try:
+        if session['employee_confirm']:
+            print(session['employee_code'])
+            if confirm == session['employee_code']:
+                user = Users(email=session['employee_email'], username=session['employee_username'],
                          password=session['employee_password'],
                          address_street=session['employee_address_street'],
                          address_city=session['employee_address_city'],
@@ -122,10 +123,13 @@ def confirmation():
                          address_country=session['employee_address_country'],
                          male=check_gender(session['employee_gender']),
                          type_of_account=False)
-            # try:
-            db.session.add(user)
-            db.session.commit()
-            flash(lazy_gettext('account has been verified'))
+            try:
+                db.session.add(user)
+                db.session.commit()
+                flash(lazy_gettext('account has been verified'))
+            except:
+                db.session.rollback()
+                return abort(404)
             return render_template('employee_successful_added.html')
             # except Exception as e:
             #     db.session.rollback()
@@ -133,7 +137,7 @@ def confirmation():
         else:
             print('sad')
             return abort(404)
-    else:
+    except:
         # return redirect(url_for('employee.register'))
         return abort(404)
 

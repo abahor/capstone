@@ -1,5 +1,22 @@
 {% extends 'main.html' %}
 {% block jumbotron %}
-<h1>{{_('we are a company')}}</h1>
+<!--<h1>{{_('we are a company')}}</h1>-->
+<div class="media">
+  <div class="media-body">
+    <h5 class="mt-0">{{ _('About us') }}</h5>
+    <p>{{ _('We are grade 12 students from STEM Assiut school and this is our web-based application for the capstone project. Our application aims to contribute to solve one of the most demanding challenges in Egypt - the unemployment problem – as our application facilitates the connection between job providers and job seekers and helps the job seekers to locate information about available jobs faster') }}.</p>
+    <p>{{ _('Our app has a simple and friendly user interface to enable people of various levels of education to use the app easily') }}.</p>
+  </div>
+</div>
+
+
+
+<div class="media-body">{{ _('Contact us') }}:</div>
+<h6>{{ _('Ahmed Nasr') }}</h6>
+<p><a href="mailto:Ahmed.12042@stemassiut.moe.edu.eg">Ahmed.12042@stemassiut.moe.edu.eg</a></p>
+<h6>{{ _('Mahmoud Refaey') }}</h6>
+<p ><a href="mailto:mahmoud.12220@stemassiut.moe.edu.eg">mahmoud.12220@stemassiut.moe.edu.eg</a></p>
+<h6>{{ _('Abahor Melad') }}</h6>
+<p><a href="mailto:abahour.12048@stemassiut.moe.edu.eg">abahour.12048@stemassiut.moe.edu.eg</a></p>
 
 {% endblock %}

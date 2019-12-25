@@ -20,12 +20,14 @@ function myFunction(list) {
 //  console.log(typeof list);
 //  console.log(list['states']);
   province.options.length = 0
-  for (var variable in list['states']) {
+  console.log(list)
+  for (var variable of list) {
     // if (province.options.length == 0 ) {
     // province.options[province.options.length] = new Option(variable,variable,false,false)
     // } else {
-    console.log(list['states'][variable]);
-      province.options[province.options.length] = new Option(list['states'][variable],list['states'][variable],false,false)
+    console.log(variable)
+    console.log(variable['state']);
+      province.options[province.options.length] = new Option(variable['translate'],variable['state'],false,false)
     };
     // province.options[province.options.length + 1] = new Option(variable,variable,false,false)
   }
