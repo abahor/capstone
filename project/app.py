@@ -13,7 +13,7 @@ def handler(e):
 
 @app.errorhandler(exc.DisconnectionError)
 def handle_bad_request(e):
-    return render_template('somethong_Went_wrong'), 404
+    return render_template('somethong_Went_wrong.html'), 404
 
 
 if __name__ == '__main__':
