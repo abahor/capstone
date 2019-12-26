@@ -1,4 +1,4 @@
-from myproject import db, login, wa
+from myproject import db, login # , wa
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 from flask import abort
@@ -17,7 +17,7 @@ class Users(db.Model, UserMixin):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(64), unique=True, index=True)
-    username = db.Column(db.String(64))
+    username = db.Column(db.Straing(64))
     password = db.Column(db.String(128))
     profile_pic = db.Column(db.String(64), default='default.jpg')
     employer = db.Column(db.Boolean, nullable=False)
@@ -25,7 +25,7 @@ class Users(db.Model, UserMixin):
     phone_number = db.Column(db.String(20), nullable=False)
     address_street = db.Column(db.Text, nullable=False)
     address_city = db.Column(db.String(15), nullable=False)
-    address_province = db.Column(db.String(20), nullable=False)
+    address_province = db.Column(db.String(30), nullable=False)
     address_country = db.Column(db.String(15), nullable=False)
 
     Jobs = db.relationship('Jobs', backref='author', lazy=True)
@@ -65,7 +65,7 @@ class Jobs(db.Model):
     address_of_job = db.Column(db.Text, nullable=False)
     # address_street = db.Column(db.String(20), nullable=False)
     # address_city = db.Column(db.String(15), nullable=False)
-    address_province = db.Column(db.String(20), nullable=False)
+    address_province = db.Column(db.String(30), nullable=False)
     address_country = db.Column(db.String(15), nullable=False)
     applied_for_this_job = db.Column(db.Integer, default=0)
 
@@ -86,7 +86,7 @@ class Jobs(db.Model):
         self.address_country = address_country
 
 
-wa.search_index(app=app, model=Jobs)
+# wa.search_index(app=app, model=Jobs)
 
 
 # accessible
@@ -95,7 +95,7 @@ class MyUsers(ModelView):
         return current_user.is_authenticated
 
     def inaccessible_callback(self, name, **kwargs):
-        return ''
+        return abort(404)
 
 
 # accessible
@@ -108,6 +108,7 @@ class My_Admin_View(AdminIndexView):
 
     def inaccessible_callback(self, name, **kwargs):
         return abort(404)
+
 
 # ------------- Admin
 admin = Admin(app, index_view=My_Admin_View())

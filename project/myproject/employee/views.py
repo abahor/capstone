@@ -115,14 +115,14 @@ def confirmation():
             print(session['employee_code'])
             if confirm == session['employee_code']:
                 user = Users(email=session['employee_email'], username=session['employee_username'],
-                         password=session['employee_password'],
-                         address_street=session['employee_address_street'],
-                         address_city=session['employee_address_city'],
-                         address_province=session['employee_address_province'],
-                         phone_number=session['employee_phone_number'],
-                         address_country=session['employee_address_country'],
-                         male=check_gender(session['employee_gender']),
-                         type_of_account=False)
+                             password=session['employee_password'],
+                             address_street=session['employee_address_street'],
+                             address_city=session['employee_address_city'],
+                             address_province=session['employee_address_province'],
+                             phone_number=session['employee_phone_number'],
+                             address_country=session['employee_address_country'],
+                             male=check_gender(session['employee_gender']),
+                             type_of_account=False)
             try:
                 db.session.add(user)
                 db.session.commit()

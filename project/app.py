@@ -1,6 +1,9 @@
+import time
+
 from myproject import app
-from flask import render_template
+from flask import render_template, request, redirect
 from sqlalchemy import exc
+
 
 # from myproject.models import Users, Jobs
 # from flask_admin.contrib.sqla import ModelView
@@ -9,11 +12,44 @@ from sqlalchemy import exc
 
 @app.errorhandler(404)
 def handler(e):
-    return render_template('something_went_wrong.html'), 404
+    return render_template('not_found.html'), 404
+
 
 @app.errorhandler(exc.DisconnectionError)
-def handle_bad_request(e):
-    return render_template('somethong_Went_wrong.html'), 404
+def h_request(e):
+    time.sleep(5)
+    try:
+        return redirect(request.url_rule)
+    except:
+        return render_template('somethong_Went_wrong.html'), 404
+
+
+@app.errorhandler(exc.DatabaseError)
+def h_bad_request(e):
+    time.sleep(5)
+    try:
+        return redirect(request.url_rule)
+    except:
+        return render_template('somethong_Went_wrong.html'), 404
+
+
+
+@app.errorhandler(exc.DBAPIError)
+def _bad_request(e):
+    time.sleep(5)
+    try:
+        return redirect(request.url_rule)
+    except:
+        return render_template('somethong_Went_wrong.html'), 404
+
+
+@app.errorhandler(exc.InternalError)
+def _request(e):
+    time.sleep(5)
+    try:
+        return redirect(request.url_rule)
+    except:
+        return render_template('somethong_Went_wrong.html'), 404
 
 
 if __name__ == '__main__':

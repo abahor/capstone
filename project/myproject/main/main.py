@@ -6,6 +6,7 @@ from flask import Blueprint, render_template, flash, session, Markup, request, r
 from flask_babel import gettext, gettext, lazy_gettext
 from flask_login import current_user, login_user, login_required, logout_user
 from flask_mail import Message
+from sqlalchemy import exc
 from werkzeug.security import generate_password_hash
 
 from myproject import detect, random_code, mail, db
@@ -115,6 +116,7 @@ def country_translator(d):
         u.append(i)
     return u
 
+
 @mained.route('/get_province_for_country')
 def get_province_for_country():
     t = request.args.get('country')
@@ -208,8 +210,11 @@ def logout():
 
 @mained.route('/')
 def main():
-    if current_user.is_authenticated:
-        return redirect(detect(current_user, 'main'))
+    try:
+        if current_user.is_authenticated:
+            return redirect(detect(current_user, 'main'))
+    except:
+        return render_template('not_found.html')
     return render_template('main.html')
 
 
@@ -263,7 +268,11 @@ def show_details():
     if not job:
         return abort(404)
     job.applied_for_this_job += 1
-    db.session.commit()
+    try:
+        db.session.commit()
+    except:
+        db.session.rollback()
+        raise exc.DisconnectionError
     return render_template('show_details.html', job=job)
 
 

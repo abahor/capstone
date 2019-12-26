@@ -553,3 +553,6 @@ msgid "Sa"
 msgstr "السعوديه"
 
 
+msgid "not found on the server"
+msgstr "غير موجود علي السيرفر"
+

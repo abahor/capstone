@@ -17,7 +17,7 @@
       <div class="text-body" style="background:#ccc;padding-top:5px;padding-bottom:10px;padding-left:5px;border-radius:3px">
         <p class="card-text">{{ sad.text }}</p>
       </div>
-<!--    <a href="#" class="card-link">Card link</a>-->
+    <button class="btn btn-danger float-right" onclick="delete_post('{{ sad.id }}')">{{ _('delete') }}</button>
 <!--    <a href="#" class="card-link">Another link</a>-->
   </div>
 </div>
