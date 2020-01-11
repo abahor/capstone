@@ -13,17 +13,18 @@ from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 # from flask_admin.contrib.sqla import ModelView
 # from flask_googlemaps import GoogleMaps
-import flask_whooshalchemy as wa
+
 
 # from myproject.models import Users, Jobs
 
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'My_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://codeXz:hpprobook450g3*@127.0.0.1/capstone'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://abahor:7X@9ydXxuZYPS@abahor.mysql.pythonanywhere-services.com/abahor$capstone'
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['WTF_I18N_ENABLED'] = True
+app.config['SERVER_NAME'] = 'hireme-abahor.pythonanywhere.com'
 # admin = Admin(app)
 
 # app.config['GOOGLEMAPS_KEY'] = 'AIzaSyDhCWI6M6yqMrDHBLxxTqKgfzZ-iTjaV9o'
@@ -68,8 +69,8 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME='khalidgamal3030@gmail.com',
-    MAIL_PASSWORD='khalid123456789'
+    MAIL_USERNAME='jousefgamal46@gmail.com',
+    MAIL_PASSWORD='jousefgamal123456789'
 )
 mail = Mail(app)
 
