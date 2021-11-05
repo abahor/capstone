@@ -20,7 +20,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'My_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://abahor:7X@9ydXxuZYPS@abahor.mysql.pythonanywhere-services.com/abahor$capstone'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://abahor:password@abahor.mysql.pythonanywhere-services.com/abahor$capstone'
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['WTF_I18N_ENABLED'] = True
